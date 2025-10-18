@@ -487,26 +487,29 @@
           <th style="width: 28%">DIRECCIÓN</th>
           <th style="width: 12%">N° TERRI</th>
         </tr>
+           <th>NO ASISTIREMOS</th>
+          <td></td>
+          <td>Ustedes si quieren programen salida</td>
+          <td></td>
         <tr>
-          <th>SERVICIO CAMPO:</th>
-          <td><input type="text" data-field="vier_serv_hora" placeholder="9:00"></td>
+          <th>CURSO DE LA BIBLIA:</th>
+          <td><input type="text" data-field="vier_cur_hora" placeholder="16:30"></td>
+          <td><input type="text" data-field="vier_cur_act"></td>
+          <td><input type="text" data-field="vier_cur_dir"></td>
+          <td><input type="text" data-field="vier_cur_terr"></td>
+        </tr>
+        <tr>
+          <th>SERVICIO DE CAMPO:</th>
+          <td><input type="text" data-field="vier_serv_hora" placeholder="18:00"></td>
           <td><input type="text" data-field="vier_serv_act"></td>
           <td><input type="text" data-field="vier_serv_dir"></td>
           <td><input type="text" data-field="vier_serv_terr"></td>
         </tr>
-        <tr>
-          <th>ALMUERZO:</th>
-          <td><input type="text" data-field="vier_alm_hora" placeholder="13:00"></td>
-          <td><input type="text" data-field="vier_alm_act"></td>
-          <td><input type="text" data-field="vier_alm_dir"></td>
-          <td><input type="text" data-field="vier_alm_terr"></td>
-        </tr>
-        <tr>
-          <th>PASTOREO:</th>
-          <td><input type="text" data-field="vier_past_hora" placeholder="16:00"></td>
-          <td><input type="text" data-field="vier_past_act"></td>
-          <td><input type="text" data-field="vier_past_dir"></td>
-          <td><input type="text" data-field="vier_past_terr"></td>
+          <th>REUNIÓN:</th>
+          <td>20:00</td>
+          <td>REUNIÓN CON ANCIANOS Y SIERVOS MINISTERIALES</td>
+          <td>SALÓN DEL REINO</td>
+          <td></td>
         </tr>
       </table>
 
@@ -533,12 +536,12 @@
           <td><input type="text" data-field="sab_alm_dir"></td>
           <td><input type="text" data-field="sab_alm_terr"></td>
         </tr>
-        <tr>
-          <th>PASTOREO:</th>
-          <td><input type="text" data-field="sab_past_hora" placeholder="16:00"></td>
-          <td><input type="text" data-field="sab_past_act"></td>
-          <td><input type="text" data-field="sab_past_dir"></td>
-          <td><input type="text" data-field="sab_past_terr"></td>
+        </tr>
+          <th>REUNIÓN:</th>
+          <td>20:00</td>
+          <td>REUNION DE CONGREGACION</td>
+          <td>SALÓN DEL REINO</td>
+          <td></td>
         </tr>
       </table>
 
@@ -566,11 +569,11 @@
           <td><input type="text" data-field="dom_alm_terr"></td>
         </tr>
         <tr>
-          <th>PASTOREO:</th>
-          <td><input type="text" data-field="dom_past_hora" placeholder="16:00"></td>
-          <td><input type="text" data-field="dom_past_act"></td>
-          <td><input type="text" data-field="dom_past_dir"></td>
-          <td><input type="text" data-field="dom_past_terr"></td>
+          <th>SERVICIO CAMPO:</th>
+          <td><input type="text" data-field="dom_serv_hora" placeholder="16:00"></td>
+          <td><input type="text" data-field="dom_serv_act"></td>
+          <td><input type="text" data-field="dom_serv_dir"></td>
+          <td><input type="text" data-field="dom_serv_terr"></td>
         </tr>
       </table>
     </form>
@@ -582,6 +585,7 @@
     <button type="button" id="btnLimpiar" onclick="limpiarFormulario(); return false;">🗑️ Limpiar</button>
   </div>
 </div>
+
 
 <script>
 var datosApp = {};
