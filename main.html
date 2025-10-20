@@ -358,7 +358,7 @@
           <th style="width: 12%">HORA</th>
           <th style="width: 28%">ARREGLO/ACTIVIDAD</th>
           <th style="width: 28%">DIRECCIÓN</th>
-          <th style="width: 12%">N° TERRI</th>
+          <th style="width: 12%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
@@ -382,11 +382,17 @@
           <td><input type="text" data-field="mier_past_terr"></td>
         </tr>
         <tr class="fila-fija">
-          <th>REUNIÓN ESPECIAL:</th>
-          <td>20:00</td>
-          <td>REUNIÓN CON LOS PRECURSORES</td>
-          <td>SALÓN DEL REINO</td>
-          <td></td>
+          <th>
+            <select data-field="mier_tipo_actividad">
+              <option value="REUNIÓN">REUNIÓN</option>
+              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="mier_reu_hora" placeholder="19:30"></td>
+          <td><input type="text" data-field="mier_reu_act"></td>
+          <td><input type="text" data-field="mier_reu_dir"></td>
+          <td><input type="text" data-field="mier_reu_terr"></td>
         </tr>
       </table>
 
@@ -397,7 +403,7 @@
           <th style="width: 12%">HORA</th>
           <th style="width: 28%">ARREGLO/ACTIVIDAD</th>
           <th style="width: 28%">DIRECCIÓN</th>
-          <th style="width: 12%">N° TERRI</th>
+          <th style="width: 12%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
@@ -414,11 +420,18 @@
           <td><input type="text" data-field="juev_alm_terr"></td>
         </tr>
         <tr>
-          <th>PASTOREO:</th>
-          <td><input type="text" data-field="juev_past_hora" placeholder="16:00"></td>
-          <td><input type="text" data-field="juev_past_act"></td>
-          <td><input type="text" data-field="juev_past_dir"></td>
-          <td><input type="text" data-field="juev_past_terr"></td>
+          <th>
+            <select data-field="juev_tipo_actividad">
+              <option value="REUNIÓN">REUNIÓN</option>
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="juev_reu_hora" placeholder="19:30"></td>
+          <td><input type="text" data-field="juev_reu_act"></td>
+          <td><input type="text" data-field="juev_reu_dir"></td>
+          <td><input type="text" data-field="juev_reu_terr"></td>
         </tr>
       </table>
 
@@ -429,12 +442,21 @@
           <th style="width: 12%">HORA</th>
           <th style="width: 28%">ARREGLO/ACTIVIDAD</th>
           <th style="width: 28%">DIRECCIÓN</th>
-          <th style="width: 12%">N° TERRI</th>
+          <th style="width: 12%">N° TERRITORIO</th>
         </tr>
-           <th>NO ASISTIREMOS</th>
-          <td></td>
-          <td>Ustedes si quieren programen salida</td>
-          <td></td>
+        <tr>
+          <th>
+            <select data-field="vier_tipo_actividad">
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="sab_reu_hora" placeholder="9:30"></td>
+          <td><input type="text" data-field="sab_reu_act"></td>
+          <td><input type="text" data-field="sab_reu_dir"></td>
+          <td><input type="text" data-field="sab_reu_terr"></td>
+        </tr>
         <tr>
           <th>CURSO DE LA BIBLIA:</th>
           <td><input type="text" data-field="vier_cur_hora" placeholder="16:30"></td>
@@ -449,11 +471,18 @@
           <td><input type="text" data-field="vier_serv_dir"></td>
           <td><input type="text" data-field="vier_serv_terr"></td>
         </tr>
-          <th>REUNIÓN:</th>
-          <td>20:00</td>
-          <td>REUNIÓN CON ANCIANOS Y SIERVOS MINISTERIALES</td>
-          <td>SALÓN DEL REINO</td>
-          <td></td>
+        <tr>
+          <th>
+            <select data-field="vier_tipo_actividad">
+              <option value="REUNIÓN">REUNIÓN</option>
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="vier_reu_hora" placeholder="19:30"></td>
+          <td><input type="text" data-field="vier_reu_act"></td>
+          <td><input type="text" data-field="vier_reu_dir"></td>
+          <td><input type="text" data-field="vier_reu_terr"></td>
         </tr>
       </table>
 
@@ -464,7 +493,7 @@
           <th style="width: 12%">HORA</th>
           <th style="width: 28%">ARREGLO/ACTIVIDAD</th>
           <th style="width: 28%">DIRECCIÓN</th>
-          <th style="width: 12%">N° TERRI</th>
+          <th style="width: 12%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
@@ -480,12 +509,19 @@
           <td><input type="text" data-field="sab_alm_dir"></td>
           <td><input type="text" data-field="sab_alm_terr"></td>
         </tr>
-        </tr>
-          <th>REUNIÓN:</th>
-          <td>20:00</td>
-          <td>REUNION DE CONGREGACION</td>
-          <td>SALÓN DEL REINO</td>
-          <td></td>
+        <tr>
+          <th>
+            <select data-field="sab_tipo_actividad">
+              <option value="REUNIÓN">REUNIÓN</option>
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="sab_reu_hora" placeholder="19:30"></td>
+          <td><input type="text" data-field="sab_reu_act"></td>
+          <td><input type="text" data-field="sab_reu_dir"></td>
+          <td><input type="text" data-field="sab_reu_terr"></td>
         </tr>
       </table>
 
@@ -496,14 +532,21 @@
           <th style="width: 12%">HORA</th>
           <th style="width: 28%">ARREGLO/ACTIVIDAD</th>
           <th style="width: 28%">DIRECCIÓN</th>
-          <th style="width: 12%">N° TERRI</th>
+          <th style="width: 12%">N° TERRITORIO</th>
         </tr>
         <tr>
-          <th>SERVICIO CAMPO:</th>
-          <td><input type="text" data-field="dom_serv_hora" placeholder="9:00"></td>
-          <td><input type="text" data-field="dom_serv_act"></td>
-          <td><input type="text" data-field="dom_serv_dir"></td>
-          <td><input type="text" data-field="dom_serv_terr"></td>
+          <th>
+            <select data-field="dom_tipo_actividad1">
+              <option value="REUNIÓN">REUNIÓN</option>
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="dom_reu_hora" placeholder="10:00"></td>
+          <td><input type="text" data-field="dom_reu_act"></td>
+          <td><input type="text" data-field="dom_reu_dir"></td>
+          <td><input type="text" data-field="dom_reu_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
@@ -521,47 +564,45 @@
         </tr>
       </table>
 
-      <h3>ARREGLO CAROLINA:</h3>
+      <h3>ARREGLO CON CAROLINA:</h3>
       <table>
         <tr>
-          <th style="width: 20%">DIA</th>
+          <th style="width: 20%">DÍA</th>
           <th style="width: 12%">HORA</th>
           <th style="width: 28%">ARREGLO CON:</th>
           <th style="width: 28%">LUGAR DE ENCUENTRO:</th>
           <th style="width: 12%">DETALLES:</th>
         </tr>
         <tr>
-          <th>MIERCOLES:</th>
-          <td><input type="text" data-field="dom_serv_hora" placeholder="16:30"></td>
-          <td><input type="text" data-field="dom_serv_act"></td>
-          <td><input type="text" data-field="dom_serv_dir"></td>
-          <td><input type="text" data-field="dom_serv_terr"></td>
+          <th>MIÉRCOLES:</th>
+          <td><input type="text" data-field="car_mier_hora" placeholder="16:30"></td>
+          <td><input type="text" data-field="car_mier_con"></td>
+          <td><input type="text" data-field="car_mier_lugar"></td>
+          <td><input type="text" data-field="car_mier_det"></td>
         </tr>
         <tr>
           <th>JUEVES:</th>
-          <td><input type="text" data-field="dom_alm_hora" placeholder="16:30"></td>
-          <td><input type="text" data-field="dom_alm_act"></td>
-          <td><input type="text" data-field="dom_alm_dir"></td>
-          <td><input type="text" data-field="dom_alm_terr"></td>
+          <td><input type="text" data-field="car_juev_hora" placeholder="16:30"></td>
+          <td><input type="text" data-field="car_juev_con"></td>
+          <td><input type="text" data-field="car_juev_lugar"></td>
+          <td><input type="text" data-field="car_juev_det"></td>
         </tr>
         <tr>
           <th>VIERNES:</th>
-          <td><input type="text" data-field="dom_serv_hora" placeholder="16:30"></td>
-          <td><input type="text" data-field="dom_serv_act"></td>
-          <td><input type="text" data-field="dom_serv_dir"></td>
-          <td><input type="text" data-field="dom_serv_terr"></td>
+          <td><input type="text" data-field="car_vier_hora" placeholder="16:30"></td>
+          <td><input type="text" data-field="car_vier_con"></td>
+          <td><input type="text" data-field="car_vier_lugar"></td>
+          <td><input type="text" data-field="car_vier_det"></td>
         </tr>
       </table>
     </form>
   </div>
 
   <div class="button-container">
-    <button type="button" id="btnImprimir" onclick="imprimirFormulario(); return false;">🖨️ Imprimir PDF</button>
-    <button type="button" id="btnGuardar" onclick="guardarDatos(); return false;">💾 Guardar</button>
+    <button type="button" id="btnImprimir" onclick="imprimirFormulario(); return false;">🖨️ Descargar PDF</button>
     <button type="button" id="btnLimpiar" onclick="limpiarFormulario(); return false;">🗑️ Limpiar</button>
   </div>
 </div>
-
 
 <script>
 var datosApp = {};
@@ -606,9 +647,13 @@ function guardarDatos() {
   
   var camposConDataField = document.querySelectorAll('[data-field]');
   for (var j = 0; j < camposConDataField.length; j++) {
-    var input2 = camposConDataField[j];
-    var field = input2.getAttribute('data-field');
-    datosApp[field] = input2.value;
+    var elem = camposConDataField[j];
+    var field = elem.getAttribute('data-field');
+    if (elem.tagName === 'SELECT') {
+      datosApp[field] = elem.value;
+    } else {
+      datosApp[field] = elem.value;
+    }
   }
   
   mostrarMensaje('exito', '¡Datos guardados correctamente!');
