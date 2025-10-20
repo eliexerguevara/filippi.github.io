@@ -8,14 +8,14 @@
   * {
     box-sizing: border-box;
   }
-  
+
   body {
     font-family: Arial, sans-serif;
     margin: 10px;
     background: #f5f5f5;
     color: #333;
   }
-  
+
   h2 {
     text-align: center;
     color: #222;
@@ -23,7 +23,7 @@
     font-size: 18px;
     font-weight: bold;
   }
-  
+
   h3 {
     background-color: #e5e5e5;
     padding: 8px 10px;
@@ -33,7 +33,7 @@
     font-size: 14px;
     font-weight: bold;
   }
-  
+
   table {
     width: 100%;
     border-collapse: collapse;
@@ -41,7 +41,7 @@
     background: white;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
-  
+
   td, th {
     border: 1px solid #666;
     padding: 8px;
@@ -49,20 +49,20 @@
     font-size: 13px;
     line-height: 1.4;
   }
-  
+
   th {
     text-align: left;
     background: #f8f8f8;
     font-weight: bold;
   }
-  
+
   label {
     font-weight: bold;
     font-size: 12px;
     display: block;
   }
-  
-  input[type="text"] {
+
+  input[type="text"], select {
     width: 100%;
     border: 1px solid #ccc;
     color: #c62828;
@@ -73,18 +73,19 @@
     line-height: 1.4;
     border-radius: 3px;
   }
-  
-  input[type="text"]:focus {
+
+  select {
+    cursor: pointer;
+    color: #333;
+    font-weight: 600;
+  }
+
+  input[type="text"]:focus, select:focus {
     outline: 2px solid #2b6cb0;
     background-color: #fffbeb;
     border-color: #2b6cb0;
   }
-  
-  input::placeholder {
-    color: #999;
-    font-size: 13px;
-  }
-  
+
   .container {
     background: white;
     padding: 20px;
@@ -93,7 +94,7 @@
     max-width: 1200px;
     margin: 0 auto;
   }
-  
+
   .button-container {
     display: flex;
     justify-content: center;
@@ -101,7 +102,7 @@
     margin: 25px 0;
     flex-wrap: wrap;
   }
-  
+
   button {
     padding: 12px 24px;
     font-size: 16px;
@@ -112,43 +113,14 @@
     font-weight: 600;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
-  
-  button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-  
-  button:active {
-    transform: translateY(0);
-  }
-  
-  #btnGuardar {
-    background: #38a169;
-    color: white;
-  }
-  
-  #btnGuardar:hover {
-    background: #2f855a;
-  }
-  
-  #btnLimpiar {
-    background: #e53e3e;
-    color: white;
-  }
-  
-  #btnLimpiar:hover {
-    background: #c53030;
-  }
-  
-  #btnImprimir {
-    background: #805ad5;
-    color: white;
-  }
-  
-  #btnImprimir:hover {
-    background: #6b46c1;
-  }
-  
+
+  #btnGuardar { background: #38a169; color: white; }
+  #btnGuardar:hover { background: #2f855a; }
+  #btnLimpiar { background: #e53e3e; color: white; }
+  #btnLimpiar:hover { background: #c53030; }
+  #btnImprimir { background: #805ad5; color: white; }
+  #btnImprimir:hover { background: #6b46c1; }
+
   .mensaje {
     text-align: center;
     padding: 12px;
@@ -157,224 +129,196 @@
     display: none;
     font-weight: 500;
     font-size: 14px;
-    animation: slideDown 0.3s ease;
   }
-  
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  .exito { background-color: #c6f6d5; color: #22543d; border: 2px solid #9ae6b4; }
+  .error { background-color: #fed7d7; color: #742a2a; border: 2px solid #feb2b2; }
+  .info { background-color: #bee3f8; color: #1a365d; border: 2px solid #90cdf4; }
+
+  /* 🔹 Responsive móvil */
+@media screen and (max-width: 768px) {
+  body {
+    margin: 0;
+    background: #fafafa;
   }
-  
-  .exito {
-    background-color: #c6f6d5;
-    color: #22543d;
-    border: 2px solid #9ae6b4;
+
+  .container {
+    padding: 10px;
+    border-radius: 0;
+    box-shadow: none;
   }
-  
-  .error {
-    background-color: #fed7d7;
-    color: #742a2a;
-    border: 2px solid #feb2b2;
+
+  h2 { font-size: 17px; }
+  h3 { 
+    font-size: 14px; 
+    margin-top: 20px; 
+    background: #3f3f3f; 
+    color: white; 
+    border-radius: 6px;
+    text-align: center;
+    padding: 8px;
   }
-  
-  .info {
-    background-color: #bee3f8;
-    color: #1a365d;
-    border: 2px solid #90cdf4;
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
-  
-  .fila-fija {
-    background-color: #fafafa;
+
+  th, td {
+    font-size: 14px;
+    padding: 10px 8px;
+    border: 1px solid #ddd;
   }
-  
-  /* Estilos para impresión */
-  @media print {
-    @page {
-      size: A4 portrait;
-      margin: 8mm 6mm;
-    }
-    
-    /* Ocultar todo el contenido de Google Sites */
-    body > *:not(#appFormulario) {
-      display: none !important;
-    }
-    
-    /* Asegurar que solo se vea el formulario */
-    #appFormulario {
-      display: block !important;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-    }
-    
-    .button-container,
-    .mensaje {
-      display: none !important;
-    }
-    
-    body {
-      background: white;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .container {
-      box-shadow: none;
-      padding: 5mm;
-      border-radius: 0;
-      max-width: 100%;
-    }
-    
-    h2 {
-      font-size: 13px;
-      margin-bottom: 6px;
-      page-break-after: avoid;
-    }
-    
-    h3 {
-      background-color: #e0e0e0;
-      padding: 4px 6px;
-      margin-top: 5px;
-      margin-bottom: 3px;
-      font-size: 10px;
-      page-break-after: avoid;
-      page-break-inside: avoid;
-    }
-    
-    table {
-      page-break-inside: avoid;
-      margin-bottom: 4px;
-      font-size: 9px;
-      box-shadow: none;
-    }
-    
-    td, th {
-      padding: 2px 4px;
-      border: 1px solid #333;
-      font-size: 9px;
-      line-height: 1.2;
-    }
-    
-    th {
-      background: #f5f5f5;
-    }
-    
-    input[type="text"] {
-      border: none;
-      padding: 0;
-      font-size: 9px;
-      color: #000;
-      background: transparent;
-      box-shadow: none;
-    }
-    
-    label {
-      font-size: 9px;
-    }
-    
-    .fila-fija {
-      background-color: #f5f5f5;
-    }
-    
-    /* Forzar todo en una página */
-    .container {
-      page-break-inside: avoid;
-    }
-    
-    .container > * {
-      page-break-inside: avoid;
-    }
+
+  th {
+    background: #f3f3f3;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
   }
-  
-  /* Responsive para móviles */
-  @media screen and (max-width: 768px) {
-    body {
-      margin: 5px;
-      background: #f9f9f9;
-    }
-    
-    .container {
-      padding: 15px;
-      border-radius: 6px;
-    }
-    
-    h2 {
-      font-size: 16px;
-      margin-bottom: 12px;
-    }
-    
-    h3 {
-      font-size: 13px;
-      padding: 8px;
-      margin-top: 15px;
-    }
-    
-    table {
-      font-size: 12px;
-      margin-bottom: 15px;
-    }
-    
-    td, th {
-      padding: 10px 8px;
-      font-size: 13px;
-    }
-    
-    label {
-      font-size: 12px;
-      margin-bottom: 4px;
-    }
-    
-    input[type="text"] {
-      font-size: 16px !important;
-      padding: 12px;
-      border: 2px solid #ddd;
-      border-radius: 6px;
-      min-height: 44px;
-    }
-    
-    button {
-      padding: 14px 20px;
-      font-size: 16px;
-      width: 100%;
-      margin-bottom: 10px;
-      min-height: 48px;
-    }
-    
-    .button-container {
-      flex-direction: column;
-      gap: 0;
-      margin: 20px 0;
-    }
-    
-    table {
-      display: block;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      white-space: nowrap;
-    }
+
+  td {
+    background: #fff;
   }
-  
+
+  input[type="text"], select {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    padding: 10px;
+    line-height: 1.4;
+    background: #fff;
+    min-height: 42px;
+  }
+
+  input[type="text"]:focus, select:focus {
+    outline: none;
+    border-color: #2b6cb0;
+    background: #fefae0;
+  }
+
+  /* Los botones se apilan sin perder estilo */
+  .button-container {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  button {
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 14px;
+    font-weight: 600;
+  }
+
+  /* Más espacio entre secciones */
+  .section {
+    margin-bottom: 30px;
+  }
+
+  /* Quita el borde grueso en tablas pequeñas */
+  table, th, td {
+    border-color: #e0e0e0;
+  }
+}
+
+
   @media screen and (max-width: 480px) {
-    .container {
-      padding: 12px;
-    }
-    
-    h2 {
-      font-size: 15px;
-    }
-    
-    h3 {
-      font-size: 12px;
-      padding: 7px;
-    }
+    h2 { font-size: 15px; }
+    h3 { font-size: 12px; }
+    input, select { font-size: 15px; }
   }
+/* ===================== */
+/* 🔸 ESTILOS PARA IMPRESIÓN */
+/* ===================== */
+@media print {
+
+  /* Ajuste general */
+  body {
+    margin: 0;
+    padding: 0;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Ocultar elementos innecesarios */
+  .mensaje,
+  #btnGuardar,
+  #btnLimpiar,
+  #btnImprimir {
+    display: none !important;
+  }
+
+  /* Forzar todo en una sola hoja */
+  html, body {
+    width: 100%;
+    height: auto;
+    zoom: 0.85; /* Ajustá este valor entre 0.75 y 0.9 según cuán largo quede */
+  }
+
+  /* Evita saltos de página */
+  .container, table, tr, td, th, h3, h2 {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Márgenes mínimos del documento */
+  @page {
+    size: A4 portrait; /* Cambia a A3 si querés más espacio: size: A3 portrait; */
+    margin: 10mm;
+  }
+
+  /* Quitar bordes gruesos y sombras */
+  .container {
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Compactar filas de tablas */
+  table {
+    border-collapse: collapse !important;
+  }
+
+  th, td {
+    padding: 4px 6px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+  }
+
+  h2 {
+    margin-bottom: 5px !important;
+    font-size: 16px !important;
+  }
+
+  h3 {
+    margin: 8px 0 4px 0 !important;
+    font-size: 13px !important;
+    background: #eee !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact;
+  }
+
+  input, select {
+    border: none !important;
+    font-size: 11px !important;
+    color: #000 !important;
+    background: none !important;
+  }
+
+  /* Evita espacios grandes entre secciones */
+  .section {
+    margin-bottom: 8px !important;
+  }
+}
+
 </style>
 </head>
 <body>
