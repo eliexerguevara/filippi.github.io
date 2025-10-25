@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Programa de actividad con el Superintendente de circuito y su esposa</title>
+<title>Programa de actividades con Javier y Carolina Filippi</title>
 <style>
   * {
     box-sizing: border-box;
@@ -44,10 +44,10 @@
 
   td, th {
     border: 1px solid #666;
-    padding: 8px;
+    padding: 4px 6px;
     vertical-align: middle;
-    font-size: 13px;
-    line-height: 1.4;
+    font-size: 12px;
+    line-height: 1.2;
   }
 
   th {
@@ -261,7 +261,7 @@
   html, body {
     width: 100%;
     height: auto;
-    zoom: 0.85; /* Ajustá este valor entre 0.75 y 0.9 según cuán largo quede */
+    zoom: 0.75; /* Ajustá este valor entre 0.75 y 0.9 según cuán largo quede */
   }
 
   /* Evita saltos de página */
@@ -325,7 +325,7 @@
 
 <div id="appFormulario">
   <div class="container" id="formularioPDF">
-    <h2>Programa de actividad con el Superintendente de circuito y su esposa</h2>
+    <h2>Programa de actividades con Javier y Carolina Filippi (Septiembre - Febrero)</h2>
     
     <div id="mensajeExito" class="mensaje exito"></div>
     <div id="mensajeError" class="mensaje error"></div>
@@ -340,56 +340,91 @@
           <td style="width: 25%"><input type="text" id="horaReunion" placeholder="19:30" required></td>
         </tr>
         <tr>
-          <td><label>PRESIDENTE:</label></td>
+          <td><label>PRESIDENTE DE LA REUNION:</label></td>
           <td><input type="text" id="presidente" required></td>
-          <td><label>TESOROS BIBLIA:</label></td>
+          <td><label>TESOROS DE LA BIBLIA:</label></td>
           <td><input type="text" id="tesoros" required></td>
         </tr>
         <tr>
-          <td><label>ORACIÓN FINAL:</label></td>
-          <td colspan="3"><input type="text" id="oracion" required></td>
+          <td><label>CONSEJERO AUXILIAR:</label></td>
+          <td colspan="1"><input type="text" id="conseaux" required></td>
+          <td><label>SUP. VIDA Y MINISTERIO:</label></td>
+          <td colspan="1"><input type="text" id="supvida" required></td>
         </tr>
+        <tr>
+        <td><label>ORACIÓN FINAL:</label></td>
+          <td colspan="3"><input type="text" id="oracion" required></td>
+      	</tr>
       </table>
-
       <h3>MIÉRCOLES</h3>
       <table>
         <tr>
           <th style="width: 20%">DETALLE</th>
           <th style="width: 12%">HORA</th>
-          <th style="width: 28%">ARREGLO/ACTIVIDAD</th>
+          <th style="width: 28%">NOMBRE</th>
           <th style="width: 28%">DIRECCIÓN</th>
           <th style="width: 12%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" data-field="mier_serv_hora" placeholder="9:00"></td>
+          <td><input type="text" data-field="mier_serv_hora" placeholder=""></td>
           <td><input type="text" data-field="mier_serv_act"></td>
           <td><input type="text" data-field="mier_serv_dir"></td>
           <td><input type="text" data-field="mier_serv_terr"></td>
         </tr>
         <tr>
+          <th>
+            <select data-field="mier_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+              <option value="SERVICIO CAMPO">CURSO DE LA BIBLIA</option>
+              <option value="SIN ARREGLO">CARRITOS</option>
+              <option value="SIN ARREGLO">Pre. TELEFONICA</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="mier_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_act2_act"></td>
+          <td><input type="text" data-field="mier_act2_dir"></td>
+          <td><input type="text" data-field="mier_act2_terr"></td>
+        </tr>
+        <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" data-field="mier_alm_hora" placeholder="13:00"></td>
+          <td><input type="text" data-field="mier_alm_hora" placeholder=""></td>
           <td><input type="text" data-field="mier_alm_act"></td>
           <td><input type="text" data-field="mier_alm_dir"></td>
           <td><input type="text" data-field="mier_alm_terr"></td>
         </tr>
         <tr>
-          <th>PASTOREO:</th>
-          <td><input type="text" data-field="mier_past_hora" placeholder="16:00"></td>
-          <td><input type="text" data-field="mier_past_act"></td>
-          <td><input type="text" data-field="mier_past_dir"></td>
-          <td><input type="text" data-field="mier_past_terr"></td>
+          <th>
+            <select data-field="mier_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="CURSO">CURSO DE LA BIBLIA</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="mier_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_act2_act"></td>
+          <td><input type="text" data-field="mier_act2_dir"></td>
+          <td><input type="text" data-field="mier_act2_terr"></td>
+        </tr>
+        <tr>
+          <th>SERVICIO CAMPO:</th>
+          <td><input type="text" data-field="mier_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_serv_act"></td>
+          <td><input type="text" data-field="mier_serv_dir"></td>
+          <td><input type="text" data-field="mier_serv_terr"></td>
         </tr>
         <tr class="fila-fija">
           <th>
             <select data-field="mier_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>	
               <option value="REUNIÓN">REUNIÓN</option>
               <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>
             </select>
           </th>
-          <td><input type="text" data-field="mier_reu_hora" placeholder="19:30"></td>
+          <td><input type="text" data-field="mier_reu_hora" placeholder=""></td>
           <td><input type="text" data-field="mier_reu_act"></td>
           <td><input type="text" data-field="mier_reu_dir"></td>
           <td><input type="text" data-field="mier_reu_terr"></td>
@@ -401,20 +436,35 @@
         <tr>
           <th style="width: 20%">DETALLE</th>
           <th style="width: 12%">HORA</th>
-          <th style="width: 28%">ARREGLO/ACTIVIDAD</th>
+          <th style="width: 28%">NOMBRE</th>
           <th style="width: 28%">DIRECCIÓN</th>
           <th style="width: 12%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" data-field="juev_serv_hora" placeholder="9:00"></td>
+          <td><input type="text" data-field="juev_serv_hora" placeholder=""></td>
           <td><input type="text" data-field="juev_serv_act"></td>
           <td><input type="text" data-field="juev_serv_dir"></td>
           <td><input type="text" data-field="juev_serv_terr"></td>
         </tr>
         <tr>
+          <th>
+            <select data-field="juev_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+              <option value="SERVICIO CAMPO">CURSO DE LA BIBLIA</option>
+              <option value="SIN ARREGLO">CARRITOS</option>
+              <option value="SIN ARREGLO">Pre. TELEFONICA</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="juev_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_act2_act"></td>
+          <td><input type="text" data-field="juev_act2_dir"></td>
+          <td><input type="text" data-field="juev_act2_terr"></td>
+        </tr>
+        <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" data-field="juev_alm_hora" placeholder="13:00"></td>
+          <td><input type="text" data-field="juev_alm_hora" placeholder=""></td>
           <td><input type="text" data-field="juev_alm_act"></td>
           <td><input type="text" data-field="juev_alm_dir"></td>
           <td><input type="text" data-field="juev_alm_terr"></td>
@@ -422,51 +472,87 @@
         <tr>
           <th>
             <select data-field="juev_tipo_actividad">
-              <option value="REUNIÓN">REUNIÓN</option>
-              <option value="PASTOREO">PASTOREO</option>
-              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
               <option value="SIN ARREGLO">SIN ARREGLO</option>
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="CURSO">CURSO DE LA BIBLIA</option>
             </select>
           </th>
-          <td><input type="text" data-field="juev_reu_hora" placeholder="19:30"></td>
+          <td><input type="text" data-field="juev_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_act2_act"></td>
+          <td><input type="text" data-field="juev_act2_dir"></td>
+          <td><input type="text" data-field="juev_act2_terr"></td>
+        </tr>
+        <tr>
+          <th>SERVICIO CAMPO:</th>
+          <td><input type="text" data-field="juev_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_serv_act"></td>
+          <td><input type="text" data-field="juev_serv_dir"></td>
+          <td><input type="text" data-field="juev_serv_terr"></td>
+        </tr>
+        <tr class="fila-fija">
+          <th>
+            <select data-field="juev_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>  
+              <option value="REUNIÓN">REUNIÓN</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="juev_reu_hora" placeholder=""></td>
           <td><input type="text" data-field="juev_reu_act"></td>
           <td><input type="text" data-field="juev_reu_dir"></td>
           <td><input type="text" data-field="juev_reu_terr"></td>
         </tr>
       </table>
-
       <h3>VIERNES</h3>
       <table>
         <tr>
           <th style="width: 20%">DETALLE</th>
           <th style="width: 12%">HORA</th>
-          <th style="width: 28%">ARREGLO/ACTIVIDAD</th>
+          <th style="width: 28%">NOMBRE</th>
           <th style="width: 28%">DIRECCIÓN</th>
           <th style="width: 12%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>
             <select data-field="vier_tipo_actividad">
+              <option value="SIN ARREGLO">SIN ARREGLO</option>            	
               <option value="PASTOREO">PASTOREO</option>
               <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>
             </select>
           </th>
-          <td><input type="text" data-field="sab_reu_hora" placeholder="9:30"></td>
-          <td><input type="text" data-field="sab_reu_act"></td>
+          <td><input type="text" data-field="sab_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_reu_act" placeholder="ustedes si desean programar salida" ></td>
           <td><input type="text" data-field="sab_reu_dir"></td>
           <td><input type="text" data-field="sab_reu_terr"></td>
         </tr>
-        <tr>
-          <th>CURSO DE LA BIBLIA:</th>
-          <td><input type="text" data-field="vier_cur_hora" placeholder="16:30"></td>
-          <td><input type="text" data-field="vier_cur_act"></td>
-          <td><input type="text" data-field="vier_cur_dir"></td>
-          <td><input type="text" data-field="vier_cur_terr"></td>
+        <tr class="fila-fija">
+          <th>
+            <select data-field="vier_tipo_actividad">
+              <option value="SIN ARREGLO">SIN ARREGLO</option>  
+              <option value="ALMUERZO">ALMUERZO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="vier_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="vier_reu_act"></td>
+          <td><input type="text" data-field="vier_reu_dir"></td>
+          <td><input type="text" data-field="vier_reu_terr"></td>
+        </tr>
+        <tr class="fila-fija">
+          <th>
+            <select data-field="juev_tipo_actividad">
+              <option value="CURSO">CURSO DE LA BIBLIA</option>  
+              <option value="PASTOREO">PASTOREO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="juev_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_reu_act"></td>
+          <td><input type="text" data-field="juev_reu_dir"></td>
+          <td><input type="text" data-field="juev_reu_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO DE CAMPO:</th>
-          <td><input type="text" data-field="vier_serv_hora" placeholder="18:00"></td>
+          <td><input type="text" data-field="vier_serv_hora" placeholder=""></td>
           <td><input type="text" data-field="vier_serv_act"></td>
           <td><input type="text" data-field="vier_serv_dir"></td>
           <td><input type="text" data-field="vier_serv_terr"></td>
@@ -491,7 +577,7 @@
         <tr>
           <th style="width: 20%">DETALLE</th>
           <th style="width: 12%">HORA</th>
-          <th style="width: 28%">ARREGLO/ACTIVIDAD</th>
+          <th style="width: 28%">NOMBRE</th>
           <th style="width: 28%">DIRECCIÓN</th>
           <th style="width: 12%">N° TERRITORIO</th>
         </tr>
@@ -503,8 +589,23 @@
           <td><input type="text" data-field="sab_serv_terr"></td>
         </tr>
         <tr>
+          <th>
+            <select data-field="juev_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+              <option value="SERVICIO CAMPO">CURSO DE LA BIBLIA</option>
+              <option value="SIN ARREGLO">CARRITOS</option>
+              <option value="SIN ARREGLO">Pre. TELEFONICA</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="sab_act_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_act_act"></td>
+          <td><input type="text" data-field="sab_act_dir"></td>
+          <td><input type="text" data-field="sab_act_terr"></td>
+        </tr>
+        <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" data-field="sab_alm_hora" placeholder="13:00"></td>
+          <td><input type="text" data-field="sab_alm_hora" placeholder=""></td>
           <td><input type="text" data-field="sab_alm_act"></td>
           <td><input type="text" data-field="sab_alm_dir"></td>
           <td><input type="text" data-field="sab_alm_terr"></td>
@@ -530,7 +631,7 @@
         <tr>
           <th style="width: 20%">DETALLE</th>
           <th style="width: 12%">HORA</th>
-          <th style="width: 28%">ARREGLO/ACTIVIDAD</th>
+          <th style="width: 28%">NOMBRE</th>
           <th style="width: 28%">DIRECCIÓN</th>
           <th style="width: 12%">N° TERRITORIO</th>
         </tr>
@@ -543,21 +644,36 @@
               <option value="SIN ARREGLO">SIN ARREGLO</option>
             </select>
           </th>
-          <td><input type="text" data-field="dom_reu_hora" placeholder="10:00"></td>
+          <td><input type="text" data-field="dom_reu_hora" placeholder=""></td>
           <td><input type="text" data-field="dom_reu_act"></td>
           <td><input type="text" data-field="dom_reu_dir"></td>
           <td><input type="text" data-field="dom_reu_terr"></td>
         </tr>
         <tr>
+          <th>
+            <select data-field="juev_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+              <option value="SERVICIO CAMPO">CURSO DE LA BIBLIA</option>
+              <option value="SIN ARREGLO">CARRITOS</option>
+              <option value="SIN ARREGLO">Pre. TELEFONICA</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="dom_act_hora" placeholder=""></td>
+          <td><input type="text" data-field="dom_act_act"></td>
+          <td><input type="text" data-field="dom_act_dir"></td>
+          <td><input type="text" data-field="dom_act_terr"></td>
+        </tr>
+        <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" data-field="dom_alm_hora" placeholder="13:00"></td>
+          <td><input type="text" data-field="dom_alm_hora" placeholder=""></td>
           <td><input type="text" data-field="dom_alm_act"></td>
           <td><input type="text" data-field="dom_alm_dir"></td>
           <td><input type="text" data-field="dom_alm_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" data-field="dom_serv_hora" placeholder="16:00"></td>
+          <td><input type="text" data-field="dom_serv_hora" placeholder=""></td>
           <td><input type="text" data-field="dom_serv_act"></td>
           <td><input type="text" data-field="dom_serv_dir"></td>
           <td><input type="text" data-field="dom_serv_terr"></td>
