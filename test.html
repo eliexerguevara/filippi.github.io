@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa de actividades con Javier y Carolina Filippi</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 10px;
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  h2 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  h3 {
+    background-color: #e5e5e5;
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  td, th {
+    border: 1px solid #666;
+    padding: 4px 6px;
+    vertical-align: middle;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+   th {
+    text-align: left;
+    background: #f8f8f8;
+    font-weight: bold;
+  }
+
+  label {
+    font-weight: bold;
+    font-size: 13px;
+    display: block;
+  }
+
+ input[type="text"], select {
+    width: 100%;
+    border: 1px solid #ccc;
+    color: #c62828;
+    font-size: 13px;
+    padding: 8px;
+    background: white;
+    font-family: Arial, sans-serif;
+    line-height: 1.4;
+    border-radius: 3px;
+  }
+
+  select {
+    cursor: pointer;
+    color: #333;
+    font-weight: 600;
+  }
+
+  input[type="text"]:focus, select:focus {
+    outline: 2px solid #2b6cb0;
+    background-color: #fffbeb;
+    border-color: #2b6cb0;
+  }
+
+  .container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+  }
+
+  button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  #btnGuardar { background: #38a169; color: white; }
+  #btnGuardar:hover { background: #2f855a; }
+  #btnLimpiar { background: #e53e3e; color: white; }
+  #btnLimpiar:hover { background: #c53030; }
+  #btnImprimir { background: #805ad5; color: white; }
+  #btnImprimir:hover { background: #6b46c1; }
+  #btnWhatsApp { background: #25D366; color: white; }
+  #btnWhatsApp:hover { background: #128C7E; }
+
+  .mensaje {
+    text-align: center;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 6px;
+    display: none;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .exito { background-color: #c6f6d5; color: #22543d; border: 2px solid #9ae6b4; }
+  .error { background-color: #fed7d7; color: #742a2a; border: 2px solid #feb2b2; }
+  .info { background-color: #bee3f8; color: #1a365d; border: 2px solid #90cdf4; }
+
+  /* 🔹 Responsive móvil */
+@media screen and (max-width: 768px) {
+  body {
+    margin: 0;
+    background: #fafafa;
+  }
+
+  .container {
+    padding: 10px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  h2 { font-size: 17px; }
+  h3 { 
+    font-size: 14px; 
+    margin-top: 20px; 
+    background: #3f3f3f; 
+    color: white; 
+    border-radius: 6px;
+    text-align: center;
+    padding: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  th, td {
+    font-size: 14px;
+    padding: 10px 8px;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    background: #f3f3f3;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+  }
+
+  td {
+    background: #fff;
+  }
+
+  input[type="text"], select {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    padding: 10px;
+    line-height: 1.4;
+    background: #fff;
+    min-height: 42px;
+  }
+
+  input[type="text"]:focus, select:focus {
+    outline: none;
+    border-color: #2b6cb0;
+    background: #fefae0;
+  }
+
+  /* Los botones se apilan sin perder estilo */
+  .button-container {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  button {
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 14px;
+    font-weight: 600;
+  }
+
+  /* Más espacio entre secciones */
+  .section {
+    margin-bottom: 30px;
+  }
+
+  /* Quita el borde grueso en tablas pequeñas */
+  table, th, td {
+    border-color: #e0e0e0;
+  }
+}
+
+
+  @media screen and (max-width: 480px) {
+    h2 { font-size: 15px; }
+    h3 { font-size: 12px; }
+    input, select { font-size: 15px; }
+  }
+/* ===================== */
+/* 🔸 ESTILOS PARA IMPRESIÓN */
+/* ===================== */
+@media print {
+
+  /* Ajuste general */
+  body {
+    margin: 0;
+    padding: 0;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Ocultar elementos innecesarios */
+  .mensaje,
+  #btnGuardar,
+  #btnLimpiar,
+  #btnImprimir,
+  #btnWhatsApp {
+    display: none !important;
+  }
+
+  /* Forzar todo en una sola hoja */
+  html, body {
+    width: 100%;
+    height: auto;
+    zoom: 0.75; /* Ajustá este valor entre 0.75 y 0.9 según cuán largo quede */
+  }
+
+  /* Evita saltos de página */
+  .container, table, tr, td, th, h3, h2 {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Márgenes mínimos del documento */
+  @page {
+    size: A4 portrait; /* Cambia a A3 si querés más espacio: size: A3 portrait; */
+    margin: 10mm;
+  }
+
+  /* Quitar bordes gruesos y sombras */
+  .container {
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Compactar filas de tablas */
+  table {
+    border-collapse: collapse !important;
+  }
+
+  th, td {
+    padding: 4px 6px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+  }
+
+  h2 {
+    margin-bottom: 5px !important;
+    font-size: 16px !important;
+  }
+
+  h3 {
+    margin: 8px 0 4px 0 !important;
+    font-size: 13px !important;
+    background: #eee !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact;
+  }
+
+  input, select {
+    border: none !important;
+    font-size: 11px !important;
+    color: #000 !important;
+    background: none !important;
+  }
+
+  /* Evita espacios grandes entre secciones */
+  .section {
+    margin-bottom: 8px !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div id="appFormulario">
+  <div class="container" id="formularioPDF">
+    <h2>Programa de actividades con Javier y Carolina Filippi (Septiembre - Febrero)</h2>
+    
+    <div id="mensajeExito" class="mensaje exito"></div>
+    <div id="mensajeError" class="mensaje error"></div>
+    <div id="mensajeInfo" class="mensaje info"></div>
+
+    <form id="programaForm" onsubmit="return false;">
+      <table>
+        <tr>
+          <td style="width: 20%"><label>CONGREGACIÓN:</label></td>
+          <td style="width: 30%"><input type="text" id="congregacion" required></td>
+          <td style="width: 25%"><label>HORA REUNIÓN MARTES:</label></td>
+          <td style="width: 25%"><input type="text" id="horaReunion" placeholder="19:30" required></td>
+        </tr>
+        <tr>
+          <td><label>PRESIDENTE DE LA REUNION:</label></td>
+          <td><input type="text" id="presidente" required></td>
+          <td><label>TESOROS DE LA BIBLIA:</label></td>
+          <td><input type="text" id="tesoros" required></td>
+        </tr>
+        <tr>
+          <td><label>CONSEJERO AUXILIAR:</label></td>
+          <td colspan="1"><input type="text" id="conseaux" required></td>
+          <td><label>SUP. VIDA Y MINISTERIO:</label></td>
+          <td colspan="1"><input type="text" id="supvida" required></td>
+        </tr>
+        <tr>
+        <td><label>ORACIÓN FINAL:</label></td>
+          <td colspan="3"><input type="text" id="oracion" required></td>
+        </tr>
+      </table>
+      <h3>MIÉRCOLES</h3>
+      <table>
+        <tr>
+          <th style="width: 20%">DETALLE</th>
+          <th style="width: 12%">HORA</th>
+          <th style="width: 28%">NOMBRE</th>
+          <th style="width: 28%">DIRECCIÓN</th>
+          <th style="width: 12%">N° TERRITORIO</th>
+        </tr>
+        <tr>
+          <th>SERVICIO CAMPO:</th>
+          <td><input type="text" data-field="mier_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_serv_act"></td>
+          <td><input type="text" data-field="mier_serv_dir"></td>
+          <td><input type="text" data-field="mier_serv_terr"></td>
+        </tr>
+        <tr>
+          <th>
+            <select data-field="mier_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+              <option value="SERVICIO CAMPO">CURSO DE LA BIBLIA</option>
+              <option value="SIN ARREGLO">CARRITOS</option>
+              <option value="SIN ARREGLO">TELEFONICA</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="mier_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_act2_act"></td>
+          <td><input type="text" data-field="mier_act2_dir"></td>
+          <td><input type="text" data-field="mier_act2_terr"></td>
+        </tr>
+        <tr>
+          <th>ALMUERZO:</th>
+          <td><input type="text" data-field="mier_alm_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_alm_act"></td>
+          <td><input type="text" data-field="mier_alm_dir"></td>
+          <td><input type="text" data-field="mier_alm_terr"></td>
+        </tr>
+        <tr>
+          <th>
+            <select data-field="mier_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="CURSO">CURSO DE LA BIBLIA</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="mier_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_act2_act"></td>
+          <td><input type="text" data-field="mier_act2_dir"></td>
+          <td><input type="text" data-field="mier_act2_terr"></td>
+        </tr>
+        <tr>
+          <th>SERVICIO CAMPO:</th>
+          <td><input type="text" data-field="mier_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_serv_act"></td>
+          <td><input type="text" data-field="mier_serv_dir"></td>
+          <td><input type="text" data-field="mier_serv_terr"></td>
+        </tr>
+        <tr class="fila-fija">
+          <th>
+            <select data-field="mier_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>  
+              <option value="REUNIÓN">REUNIÓN CON PRECURSORES</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="mier_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_reu_act"></td>
+          <td><input type="text" data-field="mier_reu_dir"></td>
+          <td><input type="text" data-field="mier_reu_terr"></td>
+        </tr>
+      </table>
+
+      <h3>JUEVES</h3>
+      <table>
+        <tr>
+          <th style="width: 20%">DETALLE</th>
+          <th style="width: 12%">HORA</th>
+          <th style="width: 28%">NOMBRE</th>
+          <th style="width: 28%">DIRECCIÓN</th>
+          <th style="width: 12%">N° TERRITORIO</th>
+        </tr>
+        <tr>
+          <th>SERVICIO CAMPO:</th>
+          <td><input type="text" data-field="juev_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_serv_act"></td>
+          <td><input type="text" data-field="juev_serv_dir"></td>
+          <td><input type="text" data-field="juev_serv_terr"></td>
+        </tr>
+        <tr>
+          <th>
+            <select data-field="juev_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+              <option value="SERVICIO CAMPO">CURSO DE LA BIBLIA</option>
+              <option value="SIN ARREGLO">CARRITOS</option>
+              <option value="SIN ARREGLO">TELEFONICA</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="juev_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_act2_act"></td>
+          <td><input type="text" data-field="juev_act2_dir"></td>
+          <td><input type="text" data-field="juev_act2_terr"></td>
+        </tr>
+        <tr>
+          <th>ALMUERZO:</th>
+          <td><input type="text" data-field="juev_alm_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_alm_act"></td>
+          <td><input type="text" data-field="juev_alm_dir"></td>
+          <td><input type="text" data-field="juev_alm_terr"></td>
+        </tr>
+        <tr>
+          <th>
+            <select data-field="juev_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="CURSO">CURSO DE LA BIBLIA</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="juev_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_act2_act"></td>
+          <td><input type="text" data-field="juev_act2_dir"></td>
+          <td><input type="text" data-field="juev_act2_terr"></td>
+        </tr>
+        <tr>
+          <th>SERVICIO CAMPO:</th>
+          <td><input type="text" data-field="juev_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_serv_act"></td>
+          <td><input type="text" data-field="juev_serv_dir"></td>
+          <td><input type="text" data-field="juev_serv_terr"></td>
+        </tr>
+        <tr class="fila-fija">
+          <th>
+            <select data-field="juev_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>  
+              <option value="REUNIÓN">REUNIÓN CON PRECURSORES</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="juev_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_reu_act"></td>
+          <td><input type="text" data-field="juev_reu_dir"></td>
+          <td><input type="text" data-field="juev_reu_terr"></td>
+        </tr>
+      </table>
+      <h3>VIERNES</h3>
+      <table>
+        <tr>
+          <th style="width: 20%">DETALLE</th>
+          <th style="width: 12%">HORA</th>
+          <th style="width: 28%">NOMBRE</th>
+          <th style="width: 28%">DIRECCIÓN</th>
+          <th style="width: 12%">N° TERRITORIO</th>
+        </tr>
+        <tr>
+          <th>
+            <select data-field="vier_tipo_actividad">
+              <option value="SIN ARREGLO">SIN ARREGLO</option>              
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="sab_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_reu_act" placeholder="ustedes si desean programar salida" ></td>
+          <td><input type="text" data-field="sab_reu_dir"></td>
+          <td><input type="text" data-field="sab_reu_terr"></td>
+        </tr>
+        <tr class="fila-fija">
+          <th>
+            <select data-field="vier_tipo_actividad">
+              <option value="SIN ARREGLO">SIN ARREGLO</option>  
+              <option value="ALMUERZO">ALMUERZO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="vier_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="vier_reu_act"></td>
+          <td><input type="text" data-field="vier_reu_dir"></td>
+          <td><input type="text" data-field="vier_reu_terr"></td>
+        </tr>
+        <tr class="fila-fija">
+          <th>
+            <select data-field="juev_tipo_actividad">
+              <option value="CURSO">CURSO DE LA BIBLIA</option>  
+              <option value="PASTOREO">PASTOREO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="juev_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_reu_act"></td>
+          <td><input type="text" data-field="juev_reu_dir"></td>
+          <td><input type="text" data-field="juev_reu_terr"></td>
+        </tr>
+        <tr>
+          <th>SERVICIO DE CAMPO:</th>
+          <td><input type="text" data-field="vier_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="vier_serv_act"></td>
+          <td><input type="text" data-field="vier_serv_dir"></td>
+          <td><input type="text" data-field="vier_serv_terr"></td>
+        </tr>
+        <tr>
+          <th>
+            <select data-field="vier_tipo_actividad">
+              <option value="REUNIÓN">REUNIÓN CON ANCIANOS Y S.M</option>
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="vier_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="vier_reu_act"></td>
+          <td><input type="text" data-field="vier_reu_dir"></td>
+          <td><input type="text" data-field="vier_reu_terr"></td>
+        </tr>
+      </table>
+
+      <h3>SÁBADO</h3>
+      <table>
+        <tr>
+          <th style="width: 20%">DETALLE</th>
+          <th style="width: 12%">HORA</th>
+          <th style="width: 28%">NOMBRE</th>
+          <th style="width: 28%">DIRECCIÓN</th>
+          <th style="width: 12%">N° TERRITORIO</th>
+        </tr>
+        <tr>
+          <th>SERVICIO CAMPO:</th>
+          <td><input type="text" data-field="sab_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_serv_act"></td>
+          <td><input type="text" data-field="sab_serv_dir"></td>
+          <td><input type="text" data-field="sab_serv_terr"></td>
+        </tr>
+        <tr>
+          <th>
+            <select data-field="juev_tipo_actividad">
+              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+              <option value="SERVICIO CAMPO">CURSO DE LA BIBLIA</option>
+              <option value="SIN ARREGLO">CARRITOS</option>
+              <option value="SIN ARREGLO">TELEFONICA</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="sab_act_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_act_act"></td>
+          <td><input type="text" data-field="sab_act_dir"></td>
+          <td><input type="text" data-field="sab_act_terr"></td>
+        </tr>
+        <tr>
+          <th>ALMUERZO:</th>
+          <td><input type="text" data-field="sab_alm_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_alm_act"></td>
+          <td><input type="text" data-field="sab_alm_dir"></td>
+          <td><input type="text" data-field="sab_alm_terr"></td>
+        </tr>
+        <tr>
+          <th>
+            <select data-field="sab_tipo_actividad">
+              <option value="REUNIÓN">REUNIÓN CON CONGREGACION</option>
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="sab_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_reu_act"></td>
+          <td><input type="text" data-field="sab_reu_dir"></td>
+          <td><input type="text" data-field="sab_reu_terr"></td>
+        </tr>
+      </table>
+
+      <h3>DOMINGO</h3>
+      <table>
+        <tr>
+          <th style="width: 20%">DETALLE</th>
+          <th style="width: 12%">HORA</th>
+          <th style="width: 28%">NOMBRE</th>
+          <th style="width: 28%">DIRECCIÓN</th>
+          <th style="width: 12%">N° TERRITORIO</th>
+        </tr>
+        <tr>
+          <th>
+            <select data-field="dom_tipo_actividad1">
+              <option value="REUNIÓN">REUNIÓN CON CONGREGACION</option>
+              <option value="PASTOREO">PASTOREO</option>
+              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
+              <option value="SIN ARREGLO">SIN ARREGLO</option>
+            </select>
+          </th>
+          <td><input type="text" data-field="dom_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="dom_reu_act"></td>
+          <td><input type="text" data-field="dom_reu_dir"></td>
+          <td><input type="text" data-field="dom_reu_terr"></td>
+        </tr>
+        <tr>
+          <th>ALMUERZO:</th>
+          <td><input type="text" data-field="dom_alm_hora" placeholder=""></td>
+          <td><input type="text" data-field="dom_alm_act"></td>
+          <td><input type="text" data-field="dom_alm_dir"></td>
+          <td><input type="text" data-field="dom_alm_terr"></td>
+        </tr>
+        <tr>
+          <th>SERVICIO CAMPO:</th>
+          <td><input type="text" data-field="dom_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="dom_serv_act"></td>
+          <td><input type="text" data-field="dom_serv_dir"></td>
+          <td><input type="text" data-field="dom_serv_terr"></td>
+        </tr>
+      </table>
+
+      <h3>ARREGLO CON CAROLINA:</h3>
+      <table>
+        <tr>
+          <th style="width: 20%">DÍA</th>
+          <th style="width: 12%">HORA</th>
+          <th style="width: 28%">ARREGLO CON:</th>
+          <th style="width: 28%">LUGAR DE ENCUENTRO:</th>
+          <th style="width: 12%">DETALLES:</th>
+        </tr>
+        <tr>
+          <th>MIÉRCOLES:</th>
+          <td><input type="text" data-field="car_mier_hora" placeholder="16:30"></td>
+          <td><input type="text" data-field="car_mier_con"></td>
+          <td><input type="text" data-field="car_mier_lugar"></td>
+          <td><input type="text" data-field="car_mier_det"></td>
+        </tr>
+        <tr>
+          <th>JUEVES:</th>
+          <td><input type="text" data-field="car_juev_hora" placeholder="16:30"></td>
+          <td><input type="text" data-field="car_juev_con"></td>
+          <td><input type="text" data-field="car_juev_lugar"></td>
+          <td><input type="text" data-field="car_juev_det"></td>
+        </tr>
+        <tr>
+          <th>VIERNES:</th>
+          <td><input type="text" data-field="car_vier_hora" placeholder="16:30"></td>
+          <td><input type="text" data-field="car_vier_con"></td>
+          <td><input type="text" data-field="car_vier_lugar"></td>
+          <td><input type="text" data-field="car_vier_det"></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="button-container">
+    <button type="button" id="btnImprimir" onclick="imprimirFormulario(); return false;">🖨️ Descargar PDF</button>
+    <button type="button" id="btnWhatsApp" onclick="compartirWhatsApp(); return false;">📱 Compartir por WhatsApp</button>
+    <button type="button" id="btnLimpiar" onclick="limpiarFormulario(); return false;">🗑️ Limpiar</button>
+  </div>
+</div>
+
+<script>
+var datosApp = {};
+
+function mostrarMensaje(tipo, mensaje) {
+  var tipoId = tipo === 'exito' ? 'mensajeExito' : tipo === 'error' ? 'mensajeError' : 'mensajeInfo';
+  var elemento = document.getElementById(tipoId);
+  
+  if (elemento) {
+    elemento.textContent = mensaje;
+    elemento.style.display = 'block';
+    setTimeout(function() { 
+      elemento.style.display = 'none'; 
+    }, 4000);
+  }
+}
+
+function validarFormulario() {
+  var camposRequeridos = ['congregacion', 'horaReunion', 'presidente', 'tesoros', 'oracion'];
+  
+  for (var i = 0; i < camposRequeridos.length; i++) {
+    var campo = camposRequeridos[i];
+    var input = document.getElementById(campo);
+    if (!input || !input.value.trim()) {
+      mostrarMensaje('error', 'Complete el campo: ' + campo.toUpperCase());
+      if (input) input.focus();
+      return false;
+    }
+  }
+  return true;
+}
+
+function guardarDatos() {
+  datosApp = {};
+  
+  var camposConId = ['congregacion', 'horaReunion', 'presidente', 'tesoros', 'oracion'];
+  for (var i = 0; i < camposConId.length; i++) {
+    var id = camposConId[i];
+    var input = document.getElementById(id);
+    if (input) datosApp[id] = input.value;
+  }
+  
+  var camposConDataField = document.querySelectorAll('[data-field]');
+  for (var j = 0; j < camposConDataField.length; j++) {
+    var elem = camposConDataField[j];
+    var field = elem.getAttribute('data-field');
+    if (elem.tagName === 'SELECT') {
+      datosApp[field] = elem.value;
+    } else {
+      datosApp[field] = elem.value;
+    }
+  }
+  
+  mostrarMensaje('exito', '¡Datos guardados correctamente!');
+  return false;
+}
+
+function limpiarFormulario() {
+  if (confirm('¿Desea limpiar el formulario?')) {
+    document.getElementById('programaForm').reset();
+    datosApp = {};
+    mostrarMensaje('info', 'Formulario limpiado');
+  }
+  return false;
+}
+
+function imprimirFormulario() {
+  if (!validarFormulario()) {
+    return false;
+  }
+  
+  guardarDatos();
+  
+  setTimeout(function() {
+    try {
+      window.print();
+    } catch (e) {
+      alert('Por favor use Ctrl+P (Cmd+P en Mac) para imprimir');
+    }
+  }, 300);
+  
+  return false;
+}
+
+// Nueva función para compartir por WhatsApp
+function compartirWhatsApp() {
+  if (!validarFormulario()) {
+    return false;
+  }
+  
+  guardarDatos();
+  
+  // Crear una versión simplificada del formulario para compartir
+  var contenido = "📋 *PROGRAMA DE ACTIVIDADES*\n\n";
