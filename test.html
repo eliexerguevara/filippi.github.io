@@ -799,5 +799,54 @@ function compartirWhatsApp() {
   
   guardarDatos();
   
+  // Crear una versión resumida del formulario para compartir
+  var contenido = "📋 *PROGRAMA DE ACTIVIDADES*\n\n";
+  
+  // Información básica
+  contenido += "*Congregación:* " + (datosApp.congregacion || '') + "\n";
+  contenido += "*Hora Reunión Martes:* " + (datosApp.horaReunion || '') + "\n";
+  contenido += "*Presidente:* " + (datosApp.presidente || '') + "\n";
+  contenido += "*Tesoros de la Biblia:* " + (datosApp.tesoros || '') + "\n\n";
+  
+  // Resumen de actividades por día
+  contenido += "*MIÉRCOLES*\n";
+  if (datosApp.mier_serv_act) contenido += "• Servicio Campo: " + datosApp.mier_serv_act + "\n";
+  if (datosApp.mier_act2_act) contenido += "• " + (datosApp.mier_tipo_actividad || 'Actividad') + ": " + datosApp.mier_act2_act + "\n";
+  if (datosApp.mier_alm_act) contenido += "• Almuerzo: " + datosApp.mier_alm_act + "\n";
+  
+  contenido += "\n*JUEVES*\n";
+  if (datosApp.juev_serv_act) contenido += "• Servicio Campo: " + datosApp.juev_serv_act + "\n";
+  if (datosApp.juev_act2_act) contenido += "• " + (datosApp.juev_tipo_actividad || 'Actividad') + ": " + datosApp.juev_act2_act + "\n";
+  if (datosApp.juev_alm_act) contenido += "• Almuerzo: " + datosApp.juev_alm_act + "\n";
+  
+  contenido += "\n*VIERNES*\n";
+  if (datosApp.vier_serv_act) contenido += "• Servicio Campo: " + datosApp.vier_serv_act + "\n";
+  if (datosApp.vier_reu_act) contenido += "• " + (datosApp.vier_tipo_actividad || 'Actividad') + ": " + datosApp.vier_reu_act + "\n";
+  
+  contenido += "\n*SÁBADO*\n";
+  if (datosApp.sab_serv_act) contenido += "• Servicio Campo: " + datosApp.sab_serv_act + "\n";
+  if (datosApp.sab_act_act) contenido += "• " + (datosApp.juev_tipo_actividad || 'Actividad') + ": " + datosApp.sab_act_act + "\n";
+  if (datosApp.sab_alm_act) contenido += "• Almuerzo: " + datosApp.sab_alm_act + "\n";
+  
+  contenido += "\n*DOMINGO*\n";
+  if (datosApp.dom_reu_act) contenido += "• " + (datosApp.dom_tipo_actividad1 || 'Actividad') + ": " + datosApp.dom_reu_act + "\n";
+  if (datosApp.dom_alm_act) contenido += "• Almuerzo: " + datosApp.dom_alm_act + "\n";
+  if (datosApp.dom_serv_act) contenido += "• Servicio Campo: " + datosApp.dom_serv_act + "\n";
+  
+  // Codificar el contenido para URL
+  var textoCodificado = encodeURIComponent(contenido);
+  
+  // Crear el enlace de WhatsApp
+  var urlWhatsApp = "https://wa.me/?text=" + textoCodificado;
+  
+  // Abrir WhatsApp en una nueva ventana
+  window.open(urlWhatsApp, '_blank');
+  
+  mostrarMensaje('exito', '¡Compartiendo por WhatsApp!');
+  return false;
+}
+  
+  guardarDatos();
+  
   // Crear una versión simplificada del formulario para compartir
   var contenido = "📋 *PROGRAMA DE ACTIVIDADES*\n\n";
