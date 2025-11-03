@@ -120,8 +120,6 @@
   #btnLimpiar:hover { background: #c53030; }
   #btnImprimir { background: #805ad5; color: white; }
   #btnImprimir:hover { background: #6b46c1; }
-  #btnWhatsApp { background: #25D366; color: white; }
-  #btnWhatsApp:hover { background: #128C7E; }
 
   .mensaje {
     text-align: center;
@@ -255,8 +253,7 @@
   .mensaje,
   #btnGuardar,
   #btnLimpiar,
-  #btnImprimir,
-  #btnWhatsApp {
+  #btnImprimir {
     display: none !important;
   }
 
@@ -702,8 +699,8 @@
   </div>
 
   <div class="button-container">
+    <button onclick="compartirPDF()">📤 Compartir o Descargar PDF</button>
     <button type="button" id="btnImprimir" onclick="imprimirFormulario(); return false;">🖨️ Descargar PDF</button>
-    <button type="button" id="btnWhatsApp" onclick="compartirWhatsApp(); return false;">📱 Compartir por WhatsApp</button>
     <button type="button" id="btnLimpiar" onclick="limpiarFormulario(); return false;">🗑️ Limpiar</button>
   </div>
 </div>
@@ -791,62 +788,60 @@ function imprimirFormulario() {
   return false;
 }
 
-// Nueva función para compartir por WhatsApp
-function compartirWhatsApp() {
-  if (!validarFormulario()) {
-    return false;
-  }
-  
-  guardarDatos();
-  
-  // Crear una versión resumida del formulario para compartir
-  var contenido = "📋 *PROGRAMA DE ACTIVIDADES*\n\n";
-  
-  // Información básica
-  contenido += "*Congregación:* " + (datosApp.congregacion || '') + "\n";
-  contenido += "*Hora Reunión Martes:* " + (datosApp.horaReunion || '') + "\n";
-  contenido += "*Presidente:* " + (datosApp.presidente || '') + "\n";
-  contenido += "*Tesoros de la Biblia:* " + (datosApp.tesoros || '') + "\n\n";
-  
-  // Resumen de actividades por día
-  contenido += "*MIÉRCOLES*\n";
-  if (datosApp.mier_serv_act) contenido += "• Servicio Campo: " + datosApp.mier_serv_act + "\n";
-  if (datosApp.mier_act2_act) contenido += "• " + (datosApp.mier_tipo_actividad || 'Actividad') + ": " + datosApp.mier_act2_act + "\n";
-  if (datosApp.mier_alm_act) contenido += "• Almuerzo: " + datosApp.mier_alm_act + "\n";
-  
-  contenido += "\n*JUEVES*\n";
-  if (datosApp.juev_serv_act) contenido += "• Servicio Campo: " + datosApp.juev_serv_act + "\n";
-  if (datosApp.juev_act2_act) contenido += "• " + (datosApp.juev_tipo_actividad || 'Actividad') + ": " + datosApp.juev_act2_act + "\n";
-  if (datosApp.juev_alm_act) contenido += "• Almuerzo: " + datosApp.juev_alm_act + "\n";
-  
-  contenido += "\n*VIERNES*\n";
-  if (datosApp.vier_serv_act) contenido += "• Servicio Campo: " + datosApp.vier_serv_act + "\n";
-  if (datosApp.vier_reu_act) contenido += "• " + (datosApp.vier_tipo_actividad || 'Actividad') + ": " + datosApp.vier_reu_act + "\n";
-  
-  contenido += "\n*SÁBADO*\n";
-  if (datosApp.sab_serv_act) contenido += "• Servicio Campo: " + datosApp.sab_serv_act + "\n";
-  if (datosApp.sab_act_act) contenido += "• " + (datosApp.juev_tipo_actividad || 'Actividad') + ": " + datosApp.sab_act_act + "\n";
-  if (datosApp.sab_alm_act) contenido += "• Almuerzo: " + datosApp.sab_alm_act + "\n";
-  
-  contenido += "\n*DOMINGO*\n";
-  if (datosApp.dom_reu_act) contenido += "• " + (datosApp.dom_tipo_actividad1 || 'Actividad') + ": " + datosApp.dom_reu_act + "\n";
-  if (datosApp.dom_alm_act) contenido += "• Almuerzo: " + datosApp.dom_alm_act + "\n";
-  if (datosApp.dom_serv_act) contenido += "• Servicio Campo: " + datosApp.dom_serv_act + "\n";
-  
-  // Codificar el contenido para URL
-  var textoCodificado = encodeURIComponent(contenido);
-  
-  // Crear el enlace de WhatsApp
-  var urlWhatsApp = "https://wa.me/?text=" + textoCodificado;
-  
-  // Abrir WhatsApp en una nueva ventana
-  window.open(urlWhatsApp, '_blank');
-  
-  mostrarMensaje('exito', '¡Compartiendo por WhatsApp!');
-  return false;
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Formulario cargado correctamente');
+  });
+} else {
+  console.log('Formulario cargado correctamente');
 }
-  
-  guardarDatos();
-  
-  // Crear una versión simplificada del formulario para compartir
-  var contenido = "📋 *PROGRAMA DE ACTIVIDADES*\n\n";
+</script>
+
+</body>
+</html>
+<!-- Librería para generar PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+// === Función principal para generar y compartir/descargar el PDF ===
+function compartirPDF() {
+  const elemento = document.querySelector('.container'); // Cambia este selector si querés exportar otro bloque
+
+  const opciones = {
+    margin: 10,
+    filename: 'programa-actividades.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opciones).from(elemento).toPdf().output('blob').then(function(pdfBlob) {
+    const pdfFile = new File([pdfBlob], 'programa-actividades.pdf', { type: 'application/pdf' });
+
+    // Si el navegador soporta compartir archivos
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+      navigator.share({
+        title: 'Programa de Actividades',
+        text: 'Te comparto el programa de actividades generado',
+        files: [pdfFile]
+      }).then(() => {
+        console.log('Compartido exitosamente');
+      }).catch((error) => {
+        console.log('Error al compartir:', error);
+        descargarPDF(pdfBlob);
+      });
+    } else {
+      descargarPDF(pdfBlob);
+    }
+  });
+}
+
+// === Función auxiliar: descarga el PDF si no se puede compartir ===
+function descargarPDF(pdfBlob) {
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(pdfBlob);
+  link.download = 'programa-actividades.pdf';
+  link.click();
+  alert('PDF descargado. En tu dispositivo no está disponible la función de compartir, pero el archivo ya fue descargado.');
+}
+</script>
