@@ -334,8 +334,30 @@
     <form id="programaForm" onsubmit="return false;">
       <table>
         <tr>
-          <td style="width: 20%"><label>CONGREGACIÓN:</label></td>
-          <td style="width: 30%"><input type="text" id="congregacion" required></td>
+          <th style="width: 20%"><label>CONGREGACIÓN:</label></th>
+          <th style="width: 30%">
+          <select data-field="congregacion">
+              <option value="SELECIONAR">Seleccionar</option>
+              <option value="Capitán Bermúdez, Santa Fe">Capitán Bermúdez, Santa Fe</option>
+              <option value="Este, Carcarañá, Santa Fe">Este, Carcarañá, Santa Fe</option>
+              <option value="Oeste, Carcarañá, Santa Fe">Oeste, Carcarañá, Santa Fe</option>
+              <option value="Correa, Santa Fe">Correa, Santa Fe</option>
+              <option value="Norte, Fray Luis Beltrán, Santa Fe">Norte, Fray Luis Beltrán, Santa Fe</option>
+              <option value="Sur, Fray Luis Beltrán, Santa Fe">Sur, Fray Luis Beltrán, Santa Fe</option>
+              <option value="Funes, Santa Fe">Funes, Santa Fe</option>
+              <option value="Este, Granadero Baigorria, Santa Fe">Este, Granadero Baigorria, Santa Fe</option>
+              <option value="Oeste, Granadero Baigorria, Santa Fe">Oeste, Granadero Baigorria, Santa Fe</option>
+              <option value="Este, Pérez, Santa Fe">Este, Pérez, Santa Fe</option>
+              <option value="Oeste, Pérez, Santa Fe">Oeste, Pérez, Santa Fe</option>
+              <option value="Pueblo Andino, Santa Fe">Pueblo Andino, Santa Fe</option>
+              <option value="Puerto General San Martín, Santa Fe">Puerto General San Martín, Santa Fe</option>
+              <option value="Ricardone, Santa Fe">Ricardone, Santa Fe</option>
+              <option value="Roldán, Santa Fe">Roldán, Santa Fe</option>
+              <option value="Norte, San Lorenzo, Santa Fe">Norte, San Lorenzo, Santa Fe</option>
+              <option value="Sur, San Lorenzo, Santa Fe">Sur, San Lorenzo, Santa Fe</option>
+              <option value="Totoras, Santa Fe">Totoras, Santa Fe</option>
+            </select>
+            </th>
           <td style="width: 25%"><label>HORA REUNIÓN MARTES:</label></td>
           <td style="width: 25%"><input type="text" id="horaReunion" placeholder="19:30" required></td>
         </tr>
@@ -367,7 +389,7 @@
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="number" data-field="mier_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_serv_hora" placeholder=""></td>
           <td><input type="text" data-field="mier_serv_act"></td>
           <td><input type="text" data-field="mier_serv_dir"></td>
           <td><input type="text" data-field="mier_serv_terr"></td>
@@ -382,14 +404,14 @@
               <option value="SIN ARREGLO">TELEFONICA</option>
             </select>
           </th>
-          <td><input type="number" data-field="mier_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_act2_hora" placeholder=""></td>
           <td><input type="text" data-field="mier_act2_act"></td>
           <td><input type="text" data-field="mier_act2_dir"></td>
           <td><input type="text" data-field="mier_act2_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="number" data-field="mier_alm_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_alm_hora" placeholder=""></td>
           <td><input type="text" data-field="mier_alm_act"></td>
           <td><input type="text" data-field="mier_alm_dir"></td>
           <td><input type="text" data-field="mier_alm_terr"></td>
@@ -403,14 +425,14 @@
               <option value="CURSO">CURSO DE LA BIBLIA</option>
             </select>
           </th>
-          <td><input type="number" data-field="mier_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_act2_hora" placeholder=""></td>
           <td><input type="text" data-field="mier_act2_act"></td>
           <td><input type="text" data-field="mier_act2_dir"></td>
           <td><input type="text" data-field="mier_act2_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="number" data-field="mier_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_serv_hora" placeholder=""></td>
           <td><input type="text" data-field="mier_serv_act"></td>
           <td><input type="text" data-field="mier_serv_dir"></td>
           <td><input type="text" data-field="mier_serv_terr"></td>
@@ -423,7 +445,7 @@
               <option value="REUNIÓN">REUNIÓN CON PRECURSORES</option>
             </select>
           </th>
-          <td><input type="number" data-field="mier_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="mier_reu_hora" placeholder=""></td>
           <td><input type="text" data-field="mier_reu_act"></td>
           <td><input type="text" data-field="mier_reu_dir"></td>
           <td><input type="text" data-field="mier_reu_terr"></td>
@@ -441,7 +463,7 @@
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="number" data-field="juev_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_serv_hora" placeholder=""></td>
           <td><input type="text" data-field="juev_serv_act"></td>
           <td><input type="text" data-field="juev_serv_dir"></td>
           <td><input type="text" data-field="juev_serv_terr"></td>
@@ -456,14 +478,14 @@
               <option value="SIN ARREGLO">TELEFONICA</option>
             </select>
           </th>
-          <td><input type="number" data-field="juev_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_act2_hora" placeholder=""></td>
           <td><input type="text" data-field="juev_act2_act"></td>
           <td><input type="text" data-field="juev_act2_dir"></td>
           <td><input type="text" data-field="juev_act2_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="number" data-field="juev_alm_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_alm_hora" placeholder=""></td>
           <td><input type="text" data-field="juev_alm_act"></td>
           <td><input type="text" data-field="juev_alm_dir"></td>
           <td><input type="text" data-field="juev_alm_terr"></td>
@@ -477,14 +499,14 @@
               <option value="CURSO">CURSO DE LA BIBLIA</option>
             </select>
           </th>
-          <td><input type="number" data-field="juev_act2_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_act2_hora" placeholder=""></td>
           <td><input type="text" data-field="juev_act2_act"></td>
           <td><input type="text" data-field="juev_act2_dir"></td>
           <td><input type="text" data-field="juev_act2_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="number" data-field="juev_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_serv_hora" placeholder=""></td>
           <td><input type="text" data-field="juev_serv_act"></td>
           <td><input type="text" data-field="juev_serv_dir"></td>
           <td><input type="text" data-field="juev_serv_terr"></td>
@@ -497,7 +519,7 @@
               <option value="REUNIÓN">REUNIÓN CON PRECURSORES</option>
             </select>
           </th>
-          <td><input type="number" data-field="juev_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_reu_hora" placeholder=""></td>
           <td><input type="text" data-field="juev_reu_act"></td>
           <td><input type="text" data-field="juev_reu_dir"></td>
           <td><input type="text" data-field="juev_reu_terr"></td>
@@ -520,7 +542,7 @@
               <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
             </select>
           </th>
-          <td><input type="number" data-field="sab_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_reu_hora" placeholder=""></td>
           <td><input type="text" data-field="sab_reu_act" placeholder="ustedes si desean programar salida" ></td>
           <td><input type="text" data-field="sab_reu_dir"></td>
           <td><input type="text" data-field="sab_reu_terr"></td>
@@ -532,7 +554,7 @@
               <option value="ALMUERZO">ALMUERZO</option>
             </select>
           </th>
-          <td><input type="number" data-field="vier_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="vier_reu_hora" placeholder=""></td>
           <td><input type="text" data-field="vier_reu_act"></td>
           <td><input type="text" data-field="vier_reu_dir"></td>
           <td><input type="text" data-field="vier_reu_terr"></td>
@@ -544,14 +566,14 @@
               <option value="PASTOREO">PASTOREO</option>
             </select>
           </th>
-          <td><input type="number" data-field="juev_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="juev_reu_hora" placeholder=""></td>
           <td><input type="text" data-field="juev_reu_act"></td>
           <td><input type="text" data-field="juev_reu_dir"></td>
           <td><input type="text" data-field="juev_reu_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO DE CAMPO:</th>
-          <td><input type="number" data-field="vier_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="vier_serv_hora" placeholder=""></td>
           <td><input type="text" data-field="vier_serv_act"></td>
           <td><input type="text" data-field="vier_serv_dir"></td>
           <td><input type="text" data-field="vier_serv_terr"></td>
@@ -564,7 +586,7 @@
               <option value="SIN ARREGLO">SIN ARREGLO</option>
             </select>
           </th>
-          <td><input type="number" data-field="vier_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="vier_reu_hora" placeholder=""></td>
           <td><input type="text" data-field="vier_reu_act"></td>
           <td><input type="text" data-field="vier_reu_dir"></td>
           <td><input type="text" data-field="vier_reu_terr"></td>
@@ -582,7 +604,7 @@
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="number" data-field="sab_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_serv_hora" placeholder=""></td>
           <td><input type="text" data-field="sab_serv_act"></td>
           <td><input type="text" data-field="sab_serv_dir"></td>
           <td><input type="text" data-field="sab_serv_terr"></td>
@@ -597,14 +619,14 @@
               <option value="SIN ARREGLO">TELEFONICA</option>
             </select>
           </th>
-          <td><input type="number" data-field="sab_act_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_act_hora" placeholder=""></td>
           <td><input type="text" data-field="sab_act_act"></td>
           <td><input type="text" data-field="sab_act_dir"></td>
           <td><input type="text" data-field="sab_act_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="number" data-field="sab_alm_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_alm_hora" placeholder=""></td>
           <td><input type="text" data-field="sab_alm_act"></td>
           <td><input type="text" data-field="sab_alm_dir"></td>
           <td><input type="text" data-field="sab_alm_terr"></td>
@@ -618,7 +640,7 @@
               <option value="SIN ARREGLO">SIN ARREGLO</option>
             </select>
           </th>
-          <td><input type="number" data-field="sab_reu_hora" placeholder=""></td>
+          <td><input type="text" data-field="sab_reu_hora" placeholder=""></td>
           <td><input type="text" data-field="sab_reu_act"></td>
           <td><input type="text" data-field="sab_reu_dir"></td>
           <td><input type="text" data-field="sab_reu_terr"></td>
@@ -650,14 +672,14 @@
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="number" data-field="dom_alm_hora" placeholder=""></td>
+          <td><input type="text" data-field="dom_alm_hora" placeholder=""></td>
           <td><input type="text" data-field="dom_alm_act"></td>
           <td><input type="text" data-field="dom_alm_dir"></td>
           <td><input type="text" data-field="dom_alm_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="number" data-field="dom_serv_hora" placeholder=""></td>
+          <td><input type="text" data-field="dom_serv_hora" placeholder=""></td>
           <td><input type="text" data-field="dom_serv_act"></td>
           <td><input type="text" data-field="dom_serv_dir"></td>
           <td><input type="text" data-field="dom_serv_terr"></td>
@@ -675,21 +697,21 @@
         </tr>
         <tr>
           <th>MIÉRCOLES:</th>
-          <td><input type="number" data-field="car_mier_hora" placeholder="16:30"></td>
+          <td><input type="text" data-field="car_mier_hora" placeholder="16:30"></td>
           <td><input type="text" data-field="car_mier_con"></td>
           <td><input type="text" data-field="car_mier_lugar"></td>
           <td><input type="text" data-field="car_mier_det"></td>
         </tr>
         <tr>
           <th>JUEVES:</th>
-          <td><input type="number" data-field="car_juev_hora" placeholder="16:30"></td>
+          <td><input type="text" data-field="car_juev_hora" placeholder="16:30"></td>
           <td><input type="text" data-field="car_juev_con"></td>
           <td><input type="text" data-field="car_juev_lugar"></td>
           <td><input type="text" data-field="car_juev_det"></td>
         </tr>
         <tr>
           <th>VIERNES:</th>
-          <td><input type="number" data-field="car_vier_hora" placeholder="16:30"></td>
+          <td><input type="text" data-field="car_vier_hora" placeholder="16:30"></td>
           <td><input type="text" data-field="car_vier_con"></td>
           <td><input type="text" data-field="car_vier_lugar"></td>
           <td><input type="text" data-field="car_vier_det"></td>
@@ -699,7 +721,6 @@
   </div>
 
   <div class="button-container">
-    <button onclick="compartirPDF()">📤 Compartir o Descargar PDF</button>
     <button type="button" id="btnImprimir" onclick="imprimirFormulario(); return false;">🖨️ Descargar PDF</button>
     <button type="button" id="btnLimpiar" onclick="limpiarFormulario(); return false;">🗑️ Limpiar</button>
   </div>
@@ -799,49 +820,3 @@ if (document.readyState === 'loading') {
 
 </body>
 </html>
-<!-- Librería para generar PDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-<script>
-// === Función principal para generar y compartir/descargar el PDF ===
-function compartirPDF() {
-  const elemento = document.querySelector('.container'); // Cambia este selector si querés exportar otro bloque
-
-  const opciones = {
-    margin: 10,
-    filename: 'programa-actividades.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-  };
-
-  html2pdf().set(opciones).from(elemento).toPdf().output('blob').then(function(pdfBlob) {
-    const pdfFile = new File([pdfBlob], 'programa-actividades.pdf', { type: 'application/pdf' });
-
-    // Si el navegador soporta compartir archivos
-    if (navigator.share && navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
-      navigator.share({
-        title: 'Programa de Actividades',
-        text: 'Te comparto el programa de actividades generado',
-        files: [pdfFile]
-      }).then(() => {
-        console.log('Compartido exitosamente');
-      }).catch((error) => {
-        console.log('Error al compartir:', error);
-        descargarPDF(pdfBlob);
-      });
-    } else {
-      descargarPDF(pdfBlob);
-    }
-  });
-}
-
-// === Función auxiliar: descarga el PDF si no se puede compartir ===
-function descargarPDF(pdfBlob) {
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(pdfBlob);
-  link.download = 'programa-actividades.pdf';
-  link.click();
-  alert('PDF descargado. En tu dispositivo no está disponible la función de compartir, pero el archivo ya fue descargado.');
-}
-</script>
