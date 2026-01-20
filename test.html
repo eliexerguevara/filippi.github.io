@@ -336,7 +336,7 @@
         <tr>
           <th style="width: 20%"><label>CONGREGACIÓN:</label></th>
           <th style="width: 30%">
-          <select data-field="congregacion">
+          <select data-field="congregacion" id=congregacion>
               <option value="SELECIONAR">Seleccionar</option>
               <option value="Capitán Bermúdez, Santa Fe">Capitán Bermúdez, Santa Fe</option>
               <option value="Este, Carcarañá, Santa Fe">Este, Carcarañá, Santa Fe</option>
@@ -760,7 +760,7 @@ function validarFormulario() {
 function guardarDatos() {
   datosApp = {};
   
-  var camposConId = ['congregacion', 'horaReunion', 'presidente', 'tesoros', 'oracion'];
+  var camposConId = [ 'horaReunion', 'presidente', 'tesoros', 'oracion'];
   for (var i = 0; i < camposConId.length; i++) {
     var id = camposConId[i];
     var input = document.getElementById(id);
