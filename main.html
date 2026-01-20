@@ -11,7 +11,7 @@
 
   body {
     font-family: Arial, sans-serif;
-    margin: 10px;
+    margin: 5px;
     background: #f5f5f5;
     color: #333;
   }
@@ -261,7 +261,7 @@
   html, body {
     width: 100%;
     height: auto;
-    zoom: 0.75; /* Ajustá este valor entre 0.75 y 0.9 según cuán largo quede */
+    zoom: 0.73; /* Ajustá este valor entre 0.75 y 0.9 según cuán largo quede */
   }
 
   /* Evita saltos de página */
@@ -288,45 +288,55 @@
   }
 
   th, td {
-    padding: 4px 6px !important;
-    font-size: 11px !important;
-    line-height: 1.2 !important;
+    padding: 2px 3px !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+
   }
 
   h2 {
-    margin-bottom: 5px !important;
-    font-size: 16px !important;
+    margin-bottom: 3px !important;
+    font-size: 13px !important;
+  }
+    h1 {
+    margin-bottom: 3px !important;
+    font-size: 22px !important;
+    line-height: 1.2 !important;
   }
 
   h3 {
-    margin: 8px 0 4px 0 !important;
+    margin: 3px 0 4px 0 !important;
     font-size: 13px !important;
     background: #eee !important;
     color: #000 !important;
     -webkit-print-color-adjust: exact;
   }
 
-  input, select {
+  select {
     border: none !important;
-    font-size: 11px !important;
+    font-size: 17px !important;
+    color: #000 !important;
+    background: none !important;
+  }
+    input {
+    border: none !important;
+    font-size: 17px !important;
     color: #000 !important;
     background: none !important;
   }
 
   /* Evita espacios grandes entre secciones */
   .section {
-    margin-bottom: 8px !important;
+    margin-bottom: 3px !important;
   }
 }
 
 </style>
 </head>
 <body>
-
 <div id="appFormulario">
   <div class="container" id="formularioPDF">
-    <h2>Programa de actividades con Javier y Carolina Filippi (Septiembre - Febrero)</h2>
-    
+    <h1 style="text-align: center;" "font-size: 15px" >Programa de actividades con Javier y Carolina Filippi (Septiembre - Febrero)</h1>
     <div id="mensajeExito" class="mensaje exito"></div>
     <div id="mensajeError" class="mensaje error"></div>
     <div id="mensajeInfo" class="mensaje info"></div>
@@ -335,7 +345,7 @@
       <table>
         <tr>
           <th style="width: 20%"><label>CONGREGACIÓN:</label></th>
-          <th style="width: 30%">
+          <th style="text-align: center;" "width: 30%">
           <select data-field="congregacion" id=congregacion>
               <option value="SELECIONAR">Seleccionar</option>
               <option value="Capitán Bermúdez, Santa Fe">Capitán Bermúdez, Santa Fe</option>
@@ -381,18 +391,18 @@
       <h3>MIÉRCOLES</h3>
       <table>
         <tr>
-          <th style="width: 20%">DETALLE</th>
-          <th style="width: 12%">HORA</th>
-          <th style="width: 28%">NOMBRE</th>
-          <th style="width: 28%">DIRECCIÓN</th>
-          <th style="width: 12%">N° TERRITORIO</th>
+          <th style="text-align: center;" "width: 27%">DETALLE</th>
+          <th style="width: 7%">HORA</th>
+          <th style="text-align: center;" "width: 28%">NOMBRE</th>
+          <th style="text-align: center;" "width: 23%">DIRECCIÓN</th>
+          <th style="text-align: center;" "width: 13%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" data-field="mier_serv_hora" placeholder=""></td>
-          <td><input type="text" data-field="mier_serv_act"></td>
-          <td><input type="text" data-field="mier_serv_dir"></td>
-          <td><input type="text" data-field="mier_serv_terr"></td>
+          <td><input type="text" id=data data-field="mier_serv_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="mier_serv_act"></td>
+          <td><input type="text" id=data data-field="mier_serv_dir"></td>
+          <td><input type="text" id=data data-field="mier_serv_terr"></td>
         </tr>
         <tr>
           <th>
@@ -404,17 +414,17 @@
               <option value="SIN ARREGLO">TELEFONICA</option>
             </select>
           </th>
-          <td><input type="text" data-field="mier_act2_hora" placeholder=""></td>
-          <td><input type="text" data-field="mier_act2_act"></td>
-          <td><input type="text" data-field="mier_act2_dir"></td>
-          <td><input type="text" data-field="mier_act2_terr"></td>
+          <td><input type="text" id=data data-field="mier_act2_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="mier_act2_act"></td>
+          <td><input type="text" id=data data-field="mier_act2_dir"></td>
+          <td><input type="text" id=data data-field="mier_act2_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" data-field="mier_alm_hora" placeholder=""></td>
-          <td><input type="text" data-field="mier_alm_act"></td>
-          <td><input type="text" data-field="mier_alm_dir"></td>
-          <td><input type="text" data-field="mier_alm_terr"></td>
+          <td><input type="text" id=data data-field="mier_alm_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="mier_alm_act"></td>
+          <td><input type="text" id=data data-field="mier_alm_dir"></td>
+          <td><input type="text" id=data data-field="mier_alm_terr"></td>
         </tr>
         <tr>
           <th>
@@ -425,17 +435,17 @@
               <option value="CURSO">CURSO DE LA BIBLIA</option>
             </select>
           </th>
-          <td><input type="text" data-field="mier_act2_hora" placeholder=""></td>
-          <td><input type="text" data-field="mier_act2_act"></td>
-          <td><input type="text" data-field="mier_act2_dir"></td>
-          <td><input type="text" data-field="mier_act2_terr"></td>
+          <td><input type="text" id=data data-field="mier_act2_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="mier_act2_act"></td>
+          <td><input type="text" id=data data-field="mier_act2_dir"></td>
+          <td><input type="text" id=data data-field="mier_act2_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" data-field="mier_serv_hora" placeholder=""></td>
-          <td><input type="text" data-field="mier_serv_act"></td>
-          <td><input type="text" data-field="mier_serv_dir"></td>
-          <td><input type="text" data-field="mier_serv_terr"></td>
+          <td><input type="text" id=data data-field="mier_serv_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="mier_serv_act"></td>
+          <td><input type="text" id=data data-field="mier_serv_dir"></td>
+          <td><input type="text" id=data data-field="mier_serv_terr"></td>
         </tr>
         <tr class="fila-fija">
           <th>
@@ -445,28 +455,28 @@
               <option value="REUNIÓN">REUNIÓN CON PRECURSORES</option>
             </select>
           </th>
-          <td><input type="text" data-field="mier_reu_hora" placeholder=""></td>
-          <td><input type="text" data-field="mier_reu_act"></td>
-          <td><input type="text" data-field="mier_reu_dir"></td>
-          <td><input type="text" data-field="mier_reu_terr"></td>
+          <td><input type="text" id=data data-field="mier_reu_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="mier_reu_act"></td>
+          <td><input type="text" id=data data-field="mier_reu_dir"></td>
+          <td><input type="text" id=data data-field="mier_reu_terr"></td>
         </tr>
       </table>
 
       <h3>JUEVES</h3>
       <table>
         <tr>
-          <th style="width: 20%">DETALLE</th>
-          <th style="width: 12%">HORA</th>
-          <th style="width: 28%">NOMBRE</th>
-          <th style="width: 28%">DIRECCIÓN</th>
-          <th style="width: 12%">N° TERRITORIO</th>
+          <th style="text-align: center;" "width: 27%">DETALLE</th>
+          <th style="width: 7%">HORA</th>
+          <th style="text-align: center;" "width: 28%">NOMBRE</th>
+          <th style="text-align: center;" "width: 23%">DIRECCIÓN</th>
+          <th style="text-align: center;" "width: 13%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" data-field="juev_serv_hora" placeholder=""></td>
-          <td><input type="text" data-field="juev_serv_act"></td>
-          <td><input type="text" data-field="juev_serv_dir"></td>
-          <td><input type="text" data-field="juev_serv_terr"></td>
+          <td><input type="text" id=data data-field="juev_serv_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="juev_serv_act"></td>
+          <td><input type="text" id=data data-field="juev_serv_dir"></td>
+          <td><input type="text" id=data data-field="juev_serv_terr"></td>
         </tr>
         <tr>
           <th>
@@ -478,17 +488,17 @@
               <option value="SIN ARREGLO">TELEFONICA</option>
             </select>
           </th>
-          <td><input type="text" data-field="juev_act2_hora" placeholder=""></td>
-          <td><input type="text" data-field="juev_act2_act"></td>
-          <td><input type="text" data-field="juev_act2_dir"></td>
-          <td><input type="text" data-field="juev_act2_terr"></td>
+          <td><input type="text" id=data data-field="juev_act2_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="juev_act2_act"></td>
+          <td><input type="text" id=data data-field="juev_act2_dir"></td>
+          <td><input type="text" id=data data-field="juev_act2_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" data-field="juev_alm_hora" placeholder=""></td>
-          <td><input type="text" data-field="juev_alm_act"></td>
-          <td><input type="text" data-field="juev_alm_dir"></td>
-          <td><input type="text" data-field="juev_alm_terr"></td>
+          <td><input type="text" id=data data-field="juev_alm_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="juev_alm_act"></td>
+          <td><input type="text" id=data data-field="juev_alm_dir"></td>
+          <td><input type="text" id=data data-field="juev_alm_terr"></td>
         </tr>
         <tr>
           <th>
@@ -499,17 +509,17 @@
               <option value="CURSO">CURSO DE LA BIBLIA</option>
             </select>
           </th>
-          <td><input type="text" data-field="juev_act2_hora" placeholder=""></td>
-          <td><input type="text" data-field="juev_act2_act"></td>
-          <td><input type="text" data-field="juev_act2_dir"></td>
-          <td><input type="text" data-field="juev_act2_terr"></td>
+          <td><input type="text" id=data data-field="juev_act2_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="juev_act2_act"></td>
+          <td><input type="text" id=data data-field="juev_act2_dir"></td>
+          <td><input type="text" id=data data-field="juev_act2_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" data-field="juev_serv_hora" placeholder=""></td>
-          <td><input type="text" data-field="juev_serv_act"></td>
-          <td><input type="text" data-field="juev_serv_dir"></td>
-          <td><input type="text" data-field="juev_serv_terr"></td>
+          <td><input type="text" id=data data-field="juev_serv_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="juev_serv_act"></td>
+          <td><input type="text" id=data data-field="juev_serv_dir"></td>
+          <td><input type="text" id=data data-field="juev_serv_terr"></td>
         </tr>
         <tr class="fila-fija">
           <th>
@@ -519,20 +529,20 @@
               <option value="REUNIÓN">REUNIÓN CON PRECURSORES</option>
             </select>
           </th>
-          <td><input type="text" data-field="juev_reu_hora" placeholder=""></td>
-          <td><input type="text" data-field="juev_reu_act"></td>
-          <td><input type="text" data-field="juev_reu_dir"></td>
-          <td><input type="text" data-field="juev_reu_terr"></td>
+          <td><input type="text" id=data data-field="juev_reu_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="juev_reu_act"></td>
+          <td><input type="text" id=data data-field="juev_reu_dir"></td>
+          <td><input type="text" id=data data-field="juev_reu_terr"></td>
         </tr>
       </table>
       <h3>VIERNES</h3>
       <table>
         <tr>
-          <th style="width: 20%">DETALLE</th>
-          <th style="width: 12%">HORA</th>
-          <th style="width: 28%">NOMBRE</th>
-          <th style="width: 28%">DIRECCIÓN</th>
-          <th style="width: 12%">N° TERRITORIO</th>
+          <th style="text-align: center;" "width: 27%">DETALLE</th>
+          <th style="width: 7%">HORA</th>
+          <th style="text-align: center;" "width: 28%">NOMBRE</th>
+          <th style="text-align: center;" "width: 23%">DIRECCIÓN</th>
+          <th style="text-align: center;" "width: 13%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>
@@ -542,10 +552,10 @@
               <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
             </select>
           </th>
-          <td><input type="text" data-field="sab_reu_hora" placeholder=""></td>
-          <td><input type="text" data-field="sab_reu_act" placeholder="ustedes si desean programar salida" ></td>
-          <td><input type="text" data-field="sab_reu_dir"></td>
-          <td><input type="text" data-field="sab_reu_terr"></td>
+          <td><input type="text" id=data data-field="sab_reu_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="sab_reu_act" placeholder="ustedes si desean programar salida" ></td>
+          <td><input type="text" id=data data-field="sab_reu_dir"></td>
+          <td><input type="text" id=data data-field="sab_reu_terr"></td>
         </tr>
         <tr class="fila-fija">
           <th>
@@ -554,10 +564,10 @@
               <option value="ALMUERZO">ALMUERZO</option>
             </select>
           </th>
-          <td><input type="text" data-field="vier_reu_hora" placeholder=""></td>
-          <td><input type="text" data-field="vier_reu_act"></td>
-          <td><input type="text" data-field="vier_reu_dir"></td>
-          <td><input type="text" data-field="vier_reu_terr"></td>
+          <td><input type="text" id=data data-field="vier_reu_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="vier_reu_act"></td>
+          <td><input type="text" id=data data-field="vier_reu_dir"></td>
+          <td><input type="text" id=data data-field="vier_reu_terr"></td>
         </tr>
         <tr class="fila-fija">
           <th>
@@ -566,17 +576,17 @@
               <option value="PASTOREO">PASTOREO</option>
             </select>
           </th>
-          <td><input type="text" data-field="juev_reu_hora" placeholder=""></td>
-          <td><input type="text" data-field="juev_reu_act"></td>
-          <td><input type="text" data-field="juev_reu_dir"></td>
-          <td><input type="text" data-field="juev_reu_terr"></td>
+          <td><input type="text" id=data data-field="juev_reu_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="juev_reu_act"></td>
+          <td><input type="text" id=data data-field="juev_reu_dir"></td>
+          <td><input type="text" id=data data-field="juev_reu_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO DE CAMPO:</th>
-          <td><input type="text" data-field="vier_serv_hora" placeholder=""></td>
-          <td><input type="text" data-field="vier_serv_act"></td>
-          <td><input type="text" data-field="vier_serv_dir"></td>
-          <td><input type="text" data-field="vier_serv_terr"></td>
+          <td><input type="text" id=data data-field="vier_serv_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="vier_serv_act"></td>
+          <td><input type="text" id=data data-field="vier_serv_dir"></td>
+          <td><input type="text" id=data data-field="vier_serv_terr"></td>
         </tr>
         <tr>
           <th>
@@ -586,28 +596,28 @@
               <option value="SIN ARREGLO">SIN ARREGLO</option>
             </select>
           </th>
-          <td><input type="text" data-field="vier_reu_hora" placeholder=""></td>
-          <td><input type="text" data-field="vier_reu_act"></td>
-          <td><input type="text" data-field="vier_reu_dir"></td>
-          <td><input type="text" data-field="vier_reu_terr"></td>
+          <td><input type="text" id=data data-field="vier_reu_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="vier_reu_act"></td>
+          <td><input type="text" id=data data-field="vier_reu_dir"></td>
+          <td><input type="text" id=data data-field="vier_reu_terr"></td>
         </tr>
       </table>
 
       <h3>SÁBADO</h3>
       <table>
         <tr>
-          <th style="width: 20%">DETALLE</th>
-          <th style="width: 12%">HORA</th>
-          <th style="width: 28%">NOMBRE</th>
-          <th style="width: 28%">DIRECCIÓN</th>
-          <th style="width: 12%">N° TERRITORIO</th>
+          <th style="text-align: center;" "width: 27%">DETALLE</th>
+          <th style="width: 7%">HORA</th>
+          <th style="text-align: center;" "width: 28%">NOMBRE</th>
+          <th style="text-align: center;" "width: 23%">DIRECCIÓN</th>
+          <th style="text-align: center;" "width: 13%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" data-field="sab_serv_hora" placeholder=""></td>
-          <td><input type="text" data-field="sab_serv_act"></td>
-          <td><input type="text" data-field="sab_serv_dir"></td>
-          <td><input type="text" data-field="sab_serv_terr"></td>
+          <td><input type="text" id=data data-field="sab_serv_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="sab_serv_act"></td>
+          <td><input type="text" id=data data-field="sab_serv_dir"></td>
+          <td><input type="text" id=data data-field="sab_serv_terr"></td>
         </tr>
         <tr>
           <th>
@@ -619,17 +629,17 @@
               <option value="SIN ARREGLO">TELEFONICA</option>
             </select>
           </th>
-          <td><input type="text" data-field="sab_act_hora" placeholder=""></td>
-          <td><input type="text" data-field="sab_act_act"></td>
-          <td><input type="text" data-field="sab_act_dir"></td>
-          <td><input type="text" data-field="sab_act_terr"></td>
+          <td><input type="text" id=data data-field="sab_act_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="sab_act_act"></td>
+          <td><input type="text" id=data data-field="sab_act_dir"></td>
+          <td><input type="text" id=data data-field="sab_act_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" data-field="sab_alm_hora" placeholder=""></td>
-          <td><input type="text" data-field="sab_alm_act"></td>
-          <td><input type="text" data-field="sab_alm_dir"></td>
-          <td><input type="text" data-field="sab_alm_terr"></td>
+          <td><input type="text" id=data data-field="sab_alm_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="sab_alm_act"></td>
+          <td><input type="text" id=data data-field="sab_alm_dir"></td>
+          <td><input type="text" id=data data-field="sab_alm_terr"></td>
         </tr>
         <tr>
           <th>
@@ -640,21 +650,21 @@
               <option value="SIN ARREGLO">SIN ARREGLO</option>
             </select>
           </th>
-          <td><input type="text" data-field="sab_reu_hora" placeholder=""></td>
-          <td><input type="text" data-field="sab_reu_act"></td>
-          <td><input type="text" data-field="sab_reu_dir"></td>
-          <td><input type="text" data-field="sab_reu_terr"></td>
+          <td><input type="text" id=data data-field="sab_reu_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="sab_reu_act"></td>
+          <td><input type="text" id=data data-field="sab_reu_dir"></td>
+          <td><input type="text" id=data data-field="sab_reu_terr"></td>
         </tr>
       </table>
 
       <h3>DOMINGO</h3>
       <table>
         <tr>
-          <th style="width: 20%">DETALLE</th>
-          <th style="width: 12%">HORA</th>
-          <th style="width: 28%">NOMBRE</th>
-          <th style="width: 28%">DIRECCIÓN</th>
-          <th style="width: 12%">N° TERRITORIO</th>
+          <th style="text-align: center;" "width: 27%">DETALLE</th>
+          <th style="width: 7%">HORA</th>
+          <th style="text-align: center;" "width: 28%">NOMBRE</th>
+          <th style="text-align: center;" "width: 23%">DIRECCIÓN</th>
+          <th style="text-align: center;" "width: 13%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>
@@ -665,56 +675,56 @@
               <option value="SIN ARREGLO">SIN ARREGLO</option>
             </select>
           </th>
-          <td><input type="text" data-field="dom_reu_hora" placeholder=""></td>
-          <td><input type="text" data-field="dom_reu_act"></td>
-          <td><input type="text" data-field="dom_reu_dir"></td>
-          <td><input type="text" data-field="dom_reu_terr"></td>
+          <td><input type="text" id=data data-field="dom_reu_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="dom_reu_act"></td>
+          <td><input type="text" id=data data-field="dom_reu_dir"></td>
+          <td><input type="text" id=data data-field="dom_reu_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" data-field="dom_alm_hora" placeholder=""></td>
-          <td><input type="text" data-field="dom_alm_act"></td>
-          <td><input type="text" data-field="dom_alm_dir"></td>
-          <td><input type="text" data-field="dom_alm_terr"></td>
+          <td><input type="text" id=data data-field="dom_alm_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="dom_alm_act"></td>
+          <td><input type="text" id=data data-field="dom_alm_dir"></td>
+          <td><input type="text" id=data data-field="dom_alm_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" data-field="dom_serv_hora" placeholder=""></td>
-          <td><input type="text" data-field="dom_serv_act"></td>
-          <td><input type="text" data-field="dom_serv_dir"></td>
-          <td><input type="text" data-field="dom_serv_terr"></td>
+          <td><input type="text" id=data data-field="dom_serv_hora" placeholder=""></td>
+          <td><input type="text" id=data data-field="dom_serv_act"></td>
+          <td><input type="text" id=data data-field="dom_serv_dir"></td>
+          <td><input type="text" id=data data-field="dom_serv_terr"></td>
         </tr>
       </table>
 
       <h3>ARREGLO CON CAROLINA:</h3>
       <table>
         <tr>
-          <th style="width: 20%">DÍA</th>
-          <th style="width: 12%">HORA</th>
-          <th style="width: 28%">ARREGLO CON:</th>
-          <th style="width: 28%">LUGAR DE ENCUENTRO:</th>
-          <th style="width: 12%">DETALLES:</th>
+          <th style="text-align: center;" "width: 20%">DÍA</th>
+          <th style="width: 7%">HORA</th>
+          <th style="text-align: center;" "width: 28%">ARREGLO CON:</th>
+          <th style="text-align: center;" "width: 28%">LUGAR DE ENCUENTRO:</th>
+          <th style="text-align: center;" "width: 32%">DETALLES:</th>
         </tr>
         <tr>
           <th>MIÉRCOLES:</th>
-          <td><input type="text" data-field="car_mier_hora" placeholder="16:30"></td>
-          <td><input type="text" data-field="car_mier_con"></td>
-          <td><input type="text" data-field="car_mier_lugar"></td>
-          <td><input type="text" data-field="car_mier_det"></td>
+          <td><input type="text" id=data data-field="car_mier_hora" placeholder="16:30"></td>
+          <td><input type="text" id=data data-field="car_mier_con"></td>
+          <td><input type="text" id=data data-field="car_mier_lugar"></td>
+          <td><input type="text" id=data data-field="car_mier_det"></td>
         </tr>
         <tr>
           <th>JUEVES:</th>
-          <td><input type="text" data-field="car_juev_hora" placeholder="16:30"></td>
-          <td><input type="text" data-field="car_juev_con"></td>
-          <td><input type="text" data-field="car_juev_lugar"></td>
-          <td><input type="text" data-field="car_juev_det"></td>
+          <td><input type="text" id=data data-field="car_juev_hora" placeholder="16:30"></td>
+          <td><input type="text" id=data data-field="car_juev_con"></td>
+          <td><input type="text" id=data data-field="car_juev_lugar"></td>
+          <td><input type="text" id=data data-field="car_juev_det"></td>
         </tr>
         <tr>
           <th>VIERNES:</th>
-          <td><input type="text" data-field="car_vier_hora" placeholder="16:30"></td>
-          <td><input type="text" data-field="car_vier_con"></td>
-          <td><input type="text" data-field="car_vier_lugar"></td>
-          <td><input type="text" data-field="car_vier_det"></td>
+          <td><input type="text" id=data data-field="car_vier_hora" placeholder="16:30"></td>
+          <td><input type="text" id=data data-field="car_vier_con"></td>
+          <td><input type="text" id=data data-field="car_vier_lugar"></td>
+          <td><input type="text" id=data data-field="car_vier_det"></td>
         </tr>
       </table>
     </form>
@@ -723,6 +733,8 @@
   <div class="button-container">
     <button type="button" id="btnImprimir" onclick="imprimirFormulario(); return false;">🖨️ Descargar PDF</button>
     <button type="button" id="btnLimpiar" onclick="limpiarFormulario(); return false;">🗑️ Limpiar</button>
+    <button type="button" id="btnGuardar" onclick="guardarDatosEnNavegador(); return false;">💾 Guardar</button>
+
   </div>
 </div>
 
@@ -816,6 +828,72 @@ if (document.readyState === 'loading') {
 } else {
   console.log('Formulario cargado correctamente');
 }
+// COMPLEMENTO PARA GUARDAR/CARGAR DATOS
+
+function cargarDatos() {
+  try {
+    var datosGuardados = localStorage.getItem('programaFilippi');
+    if (datosGuardados) {
+      datosApp = JSON.parse(datosGuardados);
+      
+      var camposConId = ['congregacion', 'horaReunion', 'data','presidente', 'tesoros', 'conseaux', 'supvida', 'oracion'];
+      for (var i = 0; i < camposConId.length; i++) {
+        var id = camposConId[i];
+        var input = document.getElementById(id);
+        if (input && datosApp[id]) {
+          input.value = datosApp[id];
+        }
+      }
+      
+      var camposConDataField = document.querySelectorAll('[data-field]');
+      for (var j = 0; j < camposConDataField.length; j++) {
+        var elem = camposConDataField[j];
+        var field = elem.getAttribute('data-field');
+        if (datosApp[field]) {'data',
+          elem.value = datosApp[field];
+        }
+      }
+      
+      mostrarMensaje('info', 'Datos cargados desde el navegador');
+    }
+  } catch (e) {
+    console.error('Error al cargar datos:', e);
+  }
+}
+
+function guardarDatosEnNavegador() {
+  datosApp = {};
+  
+  var camposConId = ['congregacion', 'horaReunion', 'data','presidente', 'tesoros', 'conseaux', 'supvida', 'oracion'];
+  for (var i = 0; i < camposConId.length; i++) {
+    var id = camposConId[i];
+    var input = document.getElementById(id);
+    if (input) datosApp[id] = input.value;
+  }
+  
+  var camposConDataField = document.querySelectorAll('[data-field]');
+  for (var j = 0; j < camposConDataField.length; j++) {
+    var elem = camposConDataField[j];
+    var field = elem.getAttribute('data-field');
+    if (elem.tagName === 'SELECT') {
+      datosApp[field] = elem.value;
+    } else {
+      datosApp[field] = elem.value;
+    }
+  }
+  
+  try {
+    localStorage.setItem('programaFilippi', JSON.stringify(datosApp));
+    mostrarMensaje('exito', '¡Datos guardados correctamente en el navegador!');
+  } catch (e) {
+    mostrarMensaje('error', 'Error al guardar: ' + e.message);
+  }
+  
+  return false;
+}
+
+// Cargar datos al inicio
+cargarDatos();
 </script>
 
 </body>
