@@ -334,8 +334,30 @@
     <form id="programaForm" onsubmit="return false;">
       <table>
         <tr>
-          <td style="width: 20%"><label>CONGREGACIÓN:</label></td>
-          <td style="width: 30%"><input type="text" id="congregacion" required></td>
+          <th style="width: 20%"><label>CONGREGACIÓN:</label></th>
+          <th style="width: 30%">
+          <select data-field="congregacion" id=congregacion>
+              <option value="SELECIONAR">Seleccionar</option>
+              <option value="Capitán Bermúdez, Santa Fe">Capitán Bermúdez, Santa Fe</option>
+              <option value="Este, Carcarañá, Santa Fe">Este, Carcarañá, Santa Fe</option>
+              <option value="Oeste, Carcarañá, Santa Fe">Oeste, Carcarañá, Santa Fe</option>
+              <option value="Correa, Santa Fe">Correa, Santa Fe</option>
+              <option value="Norte, Fray Luis Beltrán, Santa Fe">Norte, Fray Luis Beltrán, Santa Fe</option>
+              <option value="Sur, Fray Luis Beltrán, Santa Fe">Sur, Fray Luis Beltrán, Santa Fe</option>
+              <option value="Funes, Santa Fe">Funes, Santa Fe</option>
+              <option value="Este, Granadero Baigorria, Santa Fe">Este, Granadero Baigorria, Santa Fe</option>
+              <option value="Oeste, Granadero Baigorria, Santa Fe">Oeste, Granadero Baigorria, Santa Fe</option>
+              <option value="Este, Pérez, Santa Fe">Este, Pérez, Santa Fe</option>
+              <option value="Oeste, Pérez, Santa Fe">Oeste, Pérez, Santa Fe</option>
+              <option value="Pueblo Andino, Santa Fe">Pueblo Andino, Santa Fe</option>
+              <option value="Puerto General San Martín, Santa Fe">Puerto General San Martín, Santa Fe</option>
+              <option value="Ricardone, Santa Fe">Ricardone, Santa Fe</option>
+              <option value="Roldán, Santa Fe">Roldán, Santa Fe</option>
+              <option value="Norte, San Lorenzo, Santa Fe">Norte, San Lorenzo, Santa Fe</option>
+              <option value="Sur, San Lorenzo, Santa Fe">Sur, San Lorenzo, Santa Fe</option>
+              <option value="Totoras, Santa Fe">Totoras, Santa Fe</option>
+            </select>
+            </th>
           <td style="width: 25%"><label>HORA REUNIÓN MARTES:</label></td>
           <td style="width: 25%"><input type="text" id="horaReunion" placeholder="19:30" required></td>
         </tr>
@@ -354,7 +376,7 @@
         <tr>
         <td><label>ORACIÓN FINAL:</label></td>
           <td colspan="3"><input type="text" id="oracion" required></td>
-      	</tr>
+        </tr>
       </table>
       <h3>MIÉRCOLES</h3>
       <table>
@@ -419,7 +441,7 @@
           <th>
             <select data-field="mier_tipo_actividad">
               <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>	
+              <option value="SIN ARREGLO">SIN ARREGLO</option>  
               <option value="REUNIÓN">REUNIÓN CON PRECURSORES</option>
             </select>
           </th>
@@ -515,7 +537,7 @@
         <tr>
           <th>
             <select data-field="vier_tipo_actividad">
-              <option value="SIN ARREGLO">SIN ARREGLO</option>            	
+              <option value="SIN ARREGLO">SIN ARREGLO</option>              
               <option value="PASTOREO">PASTOREO</option>
               <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
             </select>
@@ -738,7 +760,7 @@ function validarFormulario() {
 function guardarDatos() {
   datosApp = {};
   
-  var camposConId = ['congregacion', 'horaReunion', 'presidente', 'tesoros', 'oracion'];
+  var camposConId = [ 'horaReunion', 'presidente', 'tesoros', 'oracion'];
   for (var i = 0; i < camposConId.length; i++) {
     var id = camposConId[i];
     var input = document.getElementById(id);
