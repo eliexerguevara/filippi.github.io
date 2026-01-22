@@ -337,7 +337,6 @@
 <div id="appFormulario">
   <div class="container" id="formularioPDF">
     <h1 style="text-align: center;" "font-size: 15px" >Programa de actividades con Javier y Carolina Filippi</h1>
-    <h1 style="text-align: center;" "font-size: 15px" >(Septiembre - Febrero)</h1>
     <div id="mensajeExito" class="mensaje exito"></div>
     <div id="mensajeError" class="mensaje error"></div>
     <div id="mensajeInfo" class="mensaje info"></div>
@@ -393,14 +392,42 @@
       <table>
         <tr>
           <th style="text-align: center;" "width: 27%">DETALLE</th>
-          <th style="width: 7%">HORA</th>
-          <th style="text-align: center;" "width: 28%">NOMBRE</th>
+          <th style="width: 10%">HORA</th>
+          <th style="text-align: center;" "width: 25%">NOMBRE</th>
           <th style="text-align: center;" "width: 23%">DIRECCIÓN</th>
           <th style="text-align: center;" "width: 13%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" id=textos data-field="mier_serv_hora" placeholder=""></td>
+            <td>
+            <select id=textos data-field="agent_hora_1">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="mier_serv_act"></td>
           <td><input type="text" id=textos data-field="mier_serv_dir"></td>
           <td><input type="text" id=textos data-field="mier_serv_terr"></td>
@@ -415,14 +442,70 @@
               <option value="SIN ARREGLO">TELEFONICA</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="mier_act2_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_2">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="mier_act2_act"></td>
           <td><input type="text" id=textos data-field="mier_act2_dir"></td>
           <td><input type="text" id=textos data-field="mier_act2_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" id=textos data-field="mier_alm_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_3">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="mier_alm_act"></td>
           <td><input type="text" id=textos data-field="mier_alm_dir"></td>
           <td><input type="text" id=textos data-field="mier_alm_terr"></td>
@@ -436,14 +519,70 @@
               <option value="CURSO">CURSO DE LA BIBLIA</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="mier_act3_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_4">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="mier_act3_act"></td>
           <td><input type="text" id=textos data-field="mier_act3_dir"></td>
           <td><input type="text" id=textos data-field="mier_act3_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" id=textos data-field="mier_serv2_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_5">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="mier_serv2_act"></td>
           <td><input type="text" id=textos data-field="mier_serv2_dir"></td>
           <td><input type="text" id=textos data-field="mier_serv2_terr"></td>
@@ -456,7 +595,35 @@
               <option value="REUNIÓN">REUNIÓN CON PRECURSORES</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="mier_reu_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_6">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="mier_reu_act"></td>
           <td><input type="text" id=textos data-field="mier_reu_dir"></td>
           <td><input type="text" id=textos data-field="mier_reu_terr"></td>
@@ -467,14 +634,42 @@
       <table>
         <tr>
           <th style="text-align: center;" "width: 27%">DETALLE</th>
-          <th style="width: 7%">HORA</th>
-          <th style="text-align: center;" "width: 28%">NOMBRE</th>
+          <th style="width: 10%">HORA</th>
+          <th style="text-align: center;" "width: 25%">NOMBRE</th>
           <th style="text-align: center;" "width: 23%">DIRECCIÓN</th>
           <th style="text-align: center;" "width: 13%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" id=textos data-field="juev_serv_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_7">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="juev_serv_act"></td>
           <td><input type="text" id=textos data-field="juev_serv_dir"></td>
           <td><input type="text" id=textos data-field="juev_serv_terr"></td>
@@ -489,14 +684,70 @@
               <option value="SIN ARREGLO">TELEFONICA</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="juev_act2_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_8">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="juev_act2_act"></td>
           <td><input type="text" id=textos data-field="juev_act2_dir"></td>
           <td><input type="text" id=textos data-field="juev_act2_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" id=textos data-field="juev_alm_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_9">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="juev_alm_act"></td>
           <td><input type="text" id=textos data-field="juev_alm_dir"></td>
           <td><input type="text" id=textos data-field="juev_alm_terr"></td>
@@ -510,14 +761,70 @@
               <option value="CURSO">CURSO DE LA BIBLIA</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="juev_act2_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_10">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="juev_act2_act"></td>
           <td><input type="text" id=textos data-field="juev_act2_dir"></td>
           <td><input type="text" id=textos data-field="juev_act2_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" id=textos data-field="juev_serv2_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_11">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="juev_serv2_act"></td>
           <td><input type="text" id=textos data-field="juev_serv2_dir"></td>
           <td><input type="text" id=textos data-field="juev_serv2_terr"></td>
@@ -530,7 +837,35 @@
               <option value="REUNIÓN">REUNIÓN CON PRECURSORES</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="juev_reu_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_12">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="juev_reu_act"></td>
           <td><input type="text" id=textos data-field="juev_reu_dir"></td>
           <td><input type="text" id=textos data-field="juev_reu_terr"></td>
@@ -540,8 +875,8 @@
       <table>
         <tr>
           <th style="text-align: center;" "width: 27%">DETALLE</th>
-          <th style="width: 7%">HORA</th>
-          <th style="text-align: center;" "width: 28%">NOMBRE</th>
+          <th style="width: 10%">HORA</th>
+          <th style="text-align: center;" "width: 25%">NOMBRE</th>
           <th style="text-align: center;" "width: 23%">DIRECCIÓN</th>
           <th style="text-align: center;" "width: 13%">N° TERRITORIO</th>
         </tr>
@@ -553,7 +888,35 @@
               <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="vier_no_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_13">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="vier_no_act" placeholder="ustedes si desean programar salida" ></td>
           <td><input type="text" id=textos data-field="vier_no_dir"></td>
           <td><input type="text" id=textos data-field="vier_no_terr"></td>
@@ -565,7 +928,35 @@
               <option value="ALMUERZO">ALMUERZO</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="vier_alm_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_14">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="vier_alm_act"></td>
           <td><input type="text" id=textos data-field="vier_alm_dir"></td>
           <td><input type="text" id=textos data-field="vier_alm_terr"></td>
@@ -577,14 +968,70 @@
               <option value="PASTOREO">PASTOREO</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="vier_act_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_15">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="vier_act_act"></td>
           <td><input type="text" id=textos data-field="vier_act_dir"></td>
           <td><input type="text" id=textos data-field="vier_act_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO DE CAMPO:</th>
-          <td><input type="text" id=textos data-field="vier_serv_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_16">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="vier_serv_act"></td>
           <td><input type="text" id=textos data-field="vier_serv_dir"></td>
           <td><input type="text" id=textos data-field="vier_serv_terr"></td>
@@ -597,7 +1044,35 @@
               <option value="SIN ARREGLO">SIN ARREGLO</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="vier_reu_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_17">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="vier_reu_act"></td>
           <td><input type="text" id=textos data-field="vier_reu_dir"></td>
           <td><input type="text" id=textos data-field="vier_reu_terr"></td>
@@ -608,14 +1083,42 @@
       <table>
         <tr>
           <th style="text-align: center;" "width: 27%">DETALLE</th>
-          <th style="width: 7%">HORA</th>
-          <th style="text-align: center;" "width: 28%">NOMBRE</th>
+          <th style="width: 10%">HORA</th>
+          <th style="text-align: center;" "width: 25%">NOMBRE</th>
           <th style="text-align: center;" "width: 23%">DIRECCIÓN</th>
           <th style="text-align: center;" "width: 13%">N° TERRITORIO</th>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" id=textos data-field="sab_serv_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_18">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="sab_serv_act"></td>
           <td><input type="text" id=textos data-field="sab_serv_dir"></td>
           <td><input type="text" id=textos data-field="sab_serv_terr"></td>
@@ -630,14 +1133,70 @@
               <option value="SIN ARREGLO">TELEFONICA</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="sab_act_hora" placeholder=""></td>
+            <td>
+            <select id=textos data-field="agent_hora_19">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="sab_act_act"></td>
           <td><input type="text" id=textos data-field="sab_act_dir"></td>
           <td><input type="text" id=textos data-field="sab_act_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" id=textos data-field="sab_alm_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_20">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="sab_alm_act"></td>
           <td><input type="text" id=textos data-field="sab_alm_dir"></td>
           <td><input type="text" id=textos data-field="sab_alm_terr"></td>
@@ -651,7 +1210,35 @@
               <option value="SIN ARREGLO">SIN ARREGLO</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="sab_reu_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_21">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="sab_reu_act"></td>
           <td><input type="text" id=textos data-field="sab_reu_dir"></td>
           <td><input type="text" id=textos data-field="sab_reu_terr"></td>
@@ -662,8 +1249,8 @@
       <table>
         <tr>
           <th style="text-align: center;" "width: 27%">DETALLE</th>
-          <th style="width: 7%">HORA</th>
-          <th style="text-align: center;" "width: 28%">NOMBRE</th>
+          <th style="width: 10%">HORA</th>
+          <th style="text-align: center;" "width: 25%">NOMBRE</th>
           <th style="text-align: center;" "width: 23%">DIRECCIÓN</th>
           <th style="text-align: center;" "width: 13%">N° TERRITORIO</th>
         </tr>
@@ -676,21 +1263,105 @@
               <option value="SIN ARREGLO">SIN ARREGLO</option>
             </select>
           </th>
-          <td><input type="text" id=textos data-field="dom_reu_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_22">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="dom_reu_act"></td>
           <td><input type="text" id=textos data-field="dom_reu_dir"></td>
           <td><input type="text" id=textos data-field="dom_reu_terr"></td>
         </tr>
         <tr>
           <th>ALMUERZO:</th>
-          <td><input type="text" id=textos data-field="dom_alm_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_23">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="dom_alm_act"></td>
           <td><input type="text" id=textos data-field="dom_alm_dir"></td>
           <td><input type="text" id=textos data-field="dom_alm_terr"></td>
         </tr>
         <tr>
           <th>SERVICIO CAMPO:</th>
-          <td><input type="text" id=textos data-field="dom_serv_hora" placeholder=""></td>
+          <td>
+            <select id=textos data-field="agent_hora_24">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="dom_serv_act"></td>
           <td><input type="text" id=textos data-field="dom_serv_dir"></td>
           <td><input type="text" id=textos data-field="dom_serv_terr"></td>
@@ -701,28 +1372,112 @@
       <table>
         <tr>
           <th style="text-align: center;" "width: 20%">DÍA</th>
-          <th style="width: 7%">HORA</th>
-          <th style="text-align: center;" "width: 28%">ARREGLO CON:</th>
+          <th style="width: 10%">HORA</th>
+          <th style="text-align: center;" "width: 25%">ARREGLO CON:</th>
           <th style="text-align: center;" "width: 28%">LUGAR DE ENCUENTRO:</th>
           <th style="text-align: center;" "width: 32%">DETALLES:</th>
         </tr>
         <tr>
           <th>MIÉRCOLES:</th>
-          <td><input type="text" id=textos data-field="car_mier_hora" placeholder="16:30"></td>
+          <td>
+            <select id=textos data-field="agent_hora_25">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="car_mier_con"></td>
           <td><input type="text" id=textos data-field="car_mier_lugar"></td>
           <td><input type="text" id=textos data-field="car_mier_det"></td>
         </tr>
         <tr>
           <th>JUEVES:</th>
-          <td><input type="text" id=textos data-field="car_juev_hora" placeholder="16:30"></td>
+          <td>
+            <select id=textos data-field="agent_hora_26">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="car_juev_con"></td>
           <td><input type="text" id=textos data-field="car_juev_lugar"></td>
           <td><input type="text" id=textos data-field="car_juev_det"></td>
         </tr>
         <tr>
           <th>VIERNES:</th>
-          <td><input type="text" id=textos data-field="car_vier_hora" placeholder="16:30"></td>
+          <td>
+            <select id=textos data-field="agent_hora_27">
+              <option value="--">--</option>
+              <option value="9:00">9:00</option>
+              <option value="9:30">9:30</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+          </td>
           <td><input type="text" id=textos data-field="car_vier_con"></td>
           <td><input type="text" id=textos data-field="car_vier_lugar"></td>
           <td><input type="text" id=textos data-field="car_vier_det"></td>
