@@ -2,1704 +2,859 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Programa de actividades con Javier y Carolina Filippi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Programa Filippi</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.6.0/jspdf.plugin.autotable.min.js"></script>
 <style>
-  * {
-    box-sizing: border-box;
+  :root {
+    --azul: #1a3a5c;
+    --azul-claro: #2563a8;
+    --azul-suave: #dbeafe;
+    --gris-bg: #f0f4f8;
+    --gris-borde: #c8d6e5;
+    --texto: #1e293b;
+    --blanco: #ffffff;
+    --verde: #16a34a;
+    --rojo: #dc2626;
+    --radio: 6px;
   }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: Arial, sans-serif;
-    margin: 5px;
-    background: #f5f5f5;
-    color: #333;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--gris-bg);
+    color: var(--texto);
+    min-height: 100vh;
+    padding: 12px;
   }
 
-  h2 {
+  .app {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--blanco);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-claro) 100%);
+    color: white;
+    padding: 18px 20px;
     text-align: center;
-    color: #222;
-    margin-bottom: 15px;
-    font-size: 18px;
-    font-weight: bold;
+  }
+  .header h1 {
+    font-size: clamp(14px, 3.5vw, 18px);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .header p {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-top: 4px;
   }
 
-  h3 {
-    background-color: #e5e5e5;
-    padding: 8px 10px;
-    border-radius: 4px;
-    margin-top: 12px;
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: bold;
+  /* CUERPO */
+  .body { padding: 16px; }
+
+  /* SECCIÓN */
+  .seccion {
+    margin-bottom: 18px;
+    border: 1px solid var(--gris-borde);
+    border-radius: var(--radio);
+    overflow: hidden;
   }
 
-  table {
+  .seccion-titulo {
+    background: var(--azul);
+    color: white;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .seccion-cuerpo { padding: 12px; }
+
+  /* GRILLA GENERAL */
+  .grilla {
+    display: grid;
+    gap: 10px;
+  }
+
+  .grilla-2 { grid-template-columns: 1fr 1fr; }
+  .grilla-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .grilla-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .col-full { grid-column: 1 / -1; }
+
+  /* CAMPO */
+  .campo label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--azul);
+    margin-bottom: 4px;
+  }
+
+  .campo input,
+  .campo select {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1.5px solid var(--gris-borde);
+    border-radius: var(--radio);
+    font-size: 13px;
+    color: var(--texto);
+    background: var(--blanco);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+    font-family: inherit;
+  }
+
+  .campo select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231a3a5c' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 28px;
+  }
+
+  .campo input:focus,
+  .campo select:focus {
+    outline: none;
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 0 3px rgba(37,99,168,0.15);
+  }
+
+  /* TABLA DE ACTIVIDADES */
+  .tabla-actividades {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 12px;
-    background: white;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
 
-  td, th {
-    border: 1px solid #666;
-    padding: 4px 6px;
-    vertical-align: middle;
-    font-size: 13px;
-    line-height: 1.2;
-  }
-
-   th {
+  .tabla-actividades th {
+    background: var(--azul-suave);
+    color: var(--azul);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 7px 8px;
     text-align: left;
-    background: #f8f8f8;
-    font-weight: bold;
+    border-bottom: 2px solid var(--azul-claro);
   }
 
-  label {
-    font-weight: bold;
-    font-size: 13px;
-    display: block;
+  .tabla-actividades td {
+    padding: 4px 4px;
+    border-bottom: 1px solid #e8eef5;
+    vertical-align: top;
   }
 
- input[type="text"], select {
+  .tabla-actividades tr:last-child td { border-bottom: none; }
+  .tabla-actividades tr:nth-child(even) td { background: #f8fafc; }
+
+  .tabla-actividades input,
+  .tabla-actividades select {
     width: 100%;
-    border: 1px solid #ccc;
-    color: #c62828;
-    font-size: 13px;
-    padding: 8px;
-    background: white;
-    font-family: Arial, sans-serif;
-    line-height: 1.4;
-    border-radius: 3px;
+    padding: 7px 8px;
+    border: 1px solid var(--gris-borde);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--texto);
+    background: var(--blanco);
+    font-family: inherit;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
-  select {
+  .tabla-actividades select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%231a3a5c' d='M5 7L0 2h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    padding-right: 22px;
     cursor: pointer;
-    color: #333;
-    font-weight: 600;
   }
 
-  input[type="text"]:focus, select:focus {
-    outline: 2px solid #2b6cb0;
-    background-color: #fffbeb;
-    border-color: #2b6cb0;
+  .tabla-actividades input:focus,
+  .tabla-actividades select:focus {
+    outline: none;
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 0 2px rgba(37,99,168,0.15);
   }
 
-  .container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  .col-det  { width: 30%; }
+  .col-hora { width: 12%; }
+  .col-nom  { width: 22%; }
+  .col-dir  { width: 24%; }
+  .col-terr { width: 12%; }
 
-  .button-container {
+  /* BOTONES */
+  .botones {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 25px 0;
+    gap: 10px;
+    padding: 16px;
+    background: #f8fafc;
+    border-top: 1px solid var(--gris-borde);
     flex-wrap: wrap;
   }
 
-  button {
-    padding: 12px 24px;
-    font-size: 16px;
+  .btn {
+    flex: 1;
+    min-width: 130px;
+    padding: 13px 16px;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--radio);
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: inherit;
+  }
+
+  .btn-pdf    { background: var(--azul); color: white; }
+  .btn-pdf:hover    { background: #142d4a; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26,58,92,0.3); }
+  .btn-guardar { background: var(--verde); color: white; }
+  .btn-guardar:hover { background: #15803d; transform: translateY(-1px); }
+  .btn-limpiar { background: var(--rojo); color: white; }
+  .btn-limpiar:hover { background: #b91c1c; transform: translateY(-1px); }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: #1e293b;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 13px;
     font-weight: 600;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 9999;
+    transition: transform 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.verde { background: #16a34a; }
+  .toast.rojo  { background: #dc2626; }
+
+  /* RESPONSIVE MÓVIL */
+  @media (max-width: 640px) {
+    body { padding: 0; }
+    .app { border-radius: 0; box-shadow: none; }
+
+    .grilla-2, .grilla-3, .grilla-4 {
+      grid-template-columns: 1fr;
+    }
+
+    /* Tabla de actividades en modo card para móvil */
+    .tabla-actividades thead { display: none; }
+
+    .tabla-actividades tr {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      padding: 10px 6px;
+      border-bottom: 2px solid var(--azul-suave);
+      background: white !important;
+    }
+
+    .tabla-actividades td {
+      border: none;
+      padding: 2px;
+    }
+
+    .tabla-actividades td:nth-child(1) { grid-column: 1 / -1; }
+    .tabla-actividades td:nth-child(2) { grid-column: 1; }
+    .tabla-actividades td:nth-child(3) { grid-column: 2; }
+    .tabla-actividades td:nth-child(4) { grid-column: 1 / -1; }
+    .tabla-actividades td:nth-child(5) { grid-column: 1 / -1; }
+
+    .tabla-actividades td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--azul);
+      margin-bottom: 2px;
+    }
+
+    .botones { flex-direction: column; }
+    .btn { flex: none; width: 100%; }
   }
 
-  #btnGuardar { background: #38a169; color: white; }
-  #btnGuardar:hover { background: #2f855a; }
-  #btnLimpiar { background: #e53e3e; color: white; }
-  #btnLimpiar:hover { background: #c53030; }
-  #btnImprimir { background: #805ad5; color: white; }
-  #btnImprimir:hover { background: #6b46c1; }
-
-  .mensaje {
-    text-align: center;
-    padding: 12px;
-    margin: 15px 0;
-    border-radius: 6px;
-    display: none;
-    font-weight: 500;
-    font-size: 14px;
-  }
-
-  .exito { background-color: #c6f6d5; color: #22543d; border: 2px solid #9ae6b4; }
-  .error { background-color: #fed7d7; color: #742a2a; border: 2px solid #feb2b2; }
-  .info { background-color: #bee3f8; color: #1a365d; border: 2px solid #90cdf4; }
-
-  /* 🔹 Responsive móvil */
-@media screen and (max-width: 768px) {
-  body {
-    margin: 0;
-    background: #fafafa;
-  }
-
-  .container {
-    padding: 10px;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  h2 { font-size: 17px; }
-  h3 { 
-    font-size: 14px; 
-    margin-top: 20px; 
-    background: #3f3f3f; 
-    color: white; 
-    border-radius: 6px;
-    text-align: center;
-    padding: 8px;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-
-  th, td {
-    font-size: 14px;
-    padding: 10px 8px;
-    border: 1px solid #ddd;
-  }
-
-  th {
-    background: #f3f3f3;
-    font-weight: bold;
-    color: #333;
-    text-align: left;
-  }
-
-  td {
-    background: #fff;
-  }
-
-  input[type="text"], select {
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 15px;
-    padding: 10px;
-    line-height: 1.4;
-    background: #fff;
-    min-height: 42px;
-  }
-
-  input[type="text"]:focus, select:focus {
-    outline: none;
-    border-color: #2b6cb0;
-    background: #fefae0;
-  }
-
-  /* Los botones se apilan sin perder estilo */
-  .button-container {
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 25px;
-  }
-
-  button {
-    width: 100%;
-    border-radius: 8px;
-    font-size: 16px;
-    padding: 14px;
-    font-weight: 600;
-  }
-
-  /* Más espacio entre secciones */
-  .section {
-    margin-bottom: 30px;
-  }
-
-  /* Quita el borde grueso en tablas pequeñas */
-  table, th, td {
-    border-color: #e0e0e0;
-  }
-}
-
-
-  @media screen and (max-width: 480px) {
-    h2 { font-size: 15px; }
-    h3 { font-size: 12px; }
-    input, select { font-size: 15px; }
-  }
-/* ===================== */
-/* 🔸 ESTILOS PARA IMPRESIÓN */
-/* ===================== */
-@media print {
-
-  /* Ajuste general */
-  body {
-    margin: 0;
-    padding: 0;
-    background: white !important;
-    -webkit-print-color-adjust: exact !important;
-    color-adjust: exact !important;
-  }
-
-  /* Ocultar elementos innecesarios */
-  .mensaje,
-  #btnGuardar,
-  #btnLimpiar,
-  #btnImprimir {
-    display: none !important;
-  }
-
-  /* Forzar todo en una sola hoja */
-  html, body {
-    width: 100%;
-    height: auto;
-    zoom: 0.73; /* Ajustá este valor entre 0.75 y 0.9 según cuán largo quede */
-  }
-
-  /* Evita saltos de página */
-  .container, table, tr, td, th, h3, h2 {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-  }
-
-  /* Márgenes mínimos del documento */
-  @page {
-    size: A4 portrait; /* Cambia a A3 si querés más espacio: size: A3 portrait; */
-    margin: 10mm;
-  }
-
-  /* Quitar bordes gruesos y sombras */
-  .container {
-    box-shadow: none !important;
-    border: none !important;
-  }
-
-  /* Compactar filas de tablas */
-  table {
-    border-collapse: collapse !important;
-  }
-
-  th, td {
-    padding: 2px 3px !important;
-    font-size: 18px !important;
-    line-height: 1 !important;
-
-  }
-
-  h2 {
-    margin-bottom: 3px !important;
-    font-size: 13px !important;
-  }
-    h1 {
-    margin-bottom: 3px !important;
-    font-size: 22px !important;
-    line-height: 1.2 !important;
-  }
-
-  h3 {
-    margin: 3px 0 4px 0 !important;
-    font-size: 13px !important;
-    background: #eee !important;
-    color: #000 !important;
-    -webkit-print-color-adjust: exact;
-  }
-
-  select {
-    border: none !important;
-    font-size: 17px !important;
-    color: #000 !important;
-    background: none !important;
-  }
-    input {
-    border: none !important;
-    font-size: 17px !important;
-    color: #000 !important;
-    background: none !important;
-  }
-
-  /* Evita espacios grandes entre secciones */
-  .section {
-    margin-bottom: 3px !important;
-  }
-}
-
+  /* Spinner de carga PDF */
+  .btn-pdf.cargando { opacity: 0.7; pointer-events: none; }
 </style>
 </head>
 <body>
-<div id="appFormulario">
-  <div class="container" id="formularioPDF">
-    <h1 style="text-align: center; font-size: 15px" >Programa de actividades con Javier y Carolina Filippi</h1>
-    <div id="mensajeExito" class="mensaje exito"></div>
-    <div id="mensajeError" class="mensaje error"></div>
-    <div id="mensajeInfo" class="mensaje info"></div>
 
-    <form id="programaForm" onsubmit="return false;">
-      <table>
-        <tr>
-          <th style="width: 20%"><label>CONGREGACIÓN:</label></th>
-          <th style="text-align: center; width: 30%">
-          <select data-field="congregacion" id=congregacion>
-              <option value="SELECIONAR">Seleccionar</option>
-              <option value="Capitán Bermúdez, Santa Fe">Capitán Bermúdez, Santa Fe</option>
-              <option value="Este, Carcarañá, Santa Fe">Este, Carcarañá, Santa Fe</option>
-              <option value="Oeste, Carcarañá, Santa Fe">Oeste, Carcarañá, Santa Fe</option>
-              <option value="Correa, Santa Fe">Correa, Santa Fe</option>
-              <option value="Norte, Fray Luis Beltrán, Santa Fe">Norte, Fray Luis Beltrán, Santa Fe</option>
-              <option value="Sur, Fray Luis Beltrán, Santa Fe">Sur, Fray Luis Beltrán, Santa Fe</option>
-              <option value="Funes, Santa Fe">Funes, Santa Fe</option>
-              <option value="Este, Granadero Baigorria, Santa Fe">Este, Granadero Baigorria, Santa Fe</option>
-              <option value="Oeste, Granadero Baigorria, Santa Fe">Oeste, Granadero Baigorria, Santa Fe</option>
-              <option value="Este, Pérez, Santa Fe">Este, Pérez, Santa Fe</option>
-              <option value="Oeste, Pérez, Santa Fe">Oeste, Pérez, Santa Fe</option>
-              <option value="Pueblo Andino, Santa Fe">Pueblo Andino, Santa Fe</option>
-              <option value="Puerto General San Martín, Santa Fe">Puerto General San Martín, Santa Fe</option>
-              <option value="Ricardone, Santa Fe">Ricardone, Santa Fe</option>
-              <option value="Roldán, Santa Fe">Roldán, Santa Fe</option>
-              <option value="Norte, San Lorenzo, Santa Fe">Norte, San Lorenzo, Santa Fe</option>
-              <option value="Sur, San Lorenzo, Santa Fe">Sur, San Lorenzo, Santa Fe</option>
-              <option value="Totoras, Santa Fe">Totoras, Santa Fe</option>
-            </select>
-            </th>
-          <td style="width: 25%"><label>HORA REUNIÓN MARTES:</label></td>
-        <td style="width: 25%">
-            <select data-field="agent_hora_5" id="horaReunion" required>
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-        </tr>
-        <tr>
-          <td><label>PRESIDENTE DE LA REUNION:</label></td>
-          <td><input type="text" id="presidente" required></td>
-          <td><label>TESOROS DE LA BIBLIA:</label></td>
-          <td><input type="text" id="tesoros" required></td>
-        </tr>
-        <tr>
-          <td><label>CONSEJERO AUXILIAR:</label></td>
-          <td colspan="1"><input type="text" id="conseaux" required></td>
-          <td><label>SUP. VIDA Y MINISTERIO:</label></td>
-          <td colspan="1"><input type="text" id="supvida" required></td>
-        </tr>
-        <tr>
-        <td><label>ORACIÓN FINAL:</label></td>
-          <td colspan="3"><input type="text" id="oracion" required></td>
-        </tr>
-      </table>
-      <h3>MIÉRCOLES</h3>
-      <table>
-        <tr>
-          <th style="text-align: center; width: 27%">DETALLE</th>
-          <th style="width: 10%">HORA</th>
-          <th style="text-align: center; width: 25%">NOMBRE</th>
-          <th style="text-align: center; width: 23%">DIRECCIÓN</th>
-          <th style="text-align: center; width: 13%">N° TERRITORIO</th>
-        </tr>
-        <tr>
-          <th>SERVICIO CAMPO:</th>
-            <td>
-            <select data-field="agent_hora_1">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="mier_serv_act"></td>
-          <td><input type="text" id=textos data-field="mier_serv_dir"></td>
-          <td><input type="text" id=textos data-field="mier_serv_terr"></td>
-        </tr>
-        <tr>
-          <th>
-            <select data-field="mier_tipo_actividad">
-              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>
-              <option value="SERVICIO CAMPO">CURSO DE LA BIBLIA</option>
-              <option value="SIN ARREGLO">CARRITOS</option>
-              <option value="SIN ARREGLO">TELEFONICA</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_2">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="mier_act2_act"></td>
-          <td><input type="text" id=textos data-field="mier_act2_dir"></td>
-          <td><input type="text" id=textos data-field="mier_act2_terr"></td>
-        </tr>
-        <tr>
-          <th>ALMUERZO:</th>
-          <td>
-            <select data-field="agent_hora_3">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="mier_alm_act"></td>
-          <td><input type="text" id=textos data-field="mier_alm_dir"></td>
-          <td><input type="text" id=textos data-field="mier_alm_terr"></td>
-        </tr>
-        <tr>
-          <th>
-            <select data-field="mier_tipo2_actividad">
-              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>
-              <option value="PASTOREO">PASTOREO</option>
-              <option value="CURSO">CURSO DE LA BIBLIA</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_4">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="mier_act3_act"></td>
-          <td><input type="text" id=textos data-field="mier_act3_dir"></td>
-          <td><input type="text" id=textos data-field="mier_act3_terr"></td>
-        </tr>
-        <tr>
-          <th>SERVICIO CAMPO:</th>
-          <td>
-            <select data-field="agent_hora_5">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="mier_serv2_act"></td>
-          <td><input type="text" id=textos data-field="mier_serv2_dir"></td>
-          <td><input type="text" id=textos data-field="mier_serv2_terr"></td>
-        </tr>
-        <tr class="fila-fija">
-          <th>
-            <select data-field="mier_tipo3_actividad">
-              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>  
-              <option value="REUNIÓN">REUNIÓN CON PRECURSORES</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_6">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="mier_reu_act"></td>
-          <td><input type="text" id=textos data-field="mier_reu_dir"></td>
-          <td><input type="text" id=textos data-field="mier_reu_terr"></td>
-        </tr>
-      </table>
-
-      <h3>JUEVES</h3>
-      <table>
-        <tr>
-          <th style="text-align: center; width: 27%">DETALLE</th>
-          <th style="width: 10%">HORA</th>
-          <th style="text-align: center; width: 25%">NOMBRE</th>
-          <th style="text-align: center; width: 23%">DIRECCIÓN</th>
-          <th style="text-align: center; width: 13%">N° TERRITORIO</th>
-        </tr>
-        <tr>
-          <th>SERVICIO CAMPO:</th>
-          <td>
-            <select data-field="agent_hora_7">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="juev_serv_act"></td>
-          <td><input type="text" id=textos data-field="juev_serv_dir"></td>
-          <td><input type="text" id=textos data-field="juev_serv_terr"></td>
-        </tr>
-        <tr>
-          <th>
-            <select data-field="juev_tipo_actividad">
-              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>
-              <option value="SERVICIO CAMPO">CURSO DE LA BIBLIA</option>
-              <option value="SIN ARREGLO">CARRITOS</option>
-              <option value="SIN ARREGLO">TELEFONICA</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_8">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="juev_act2_act"></td>
-          <td><input type="text" id=textos data-field="juev_act2_dir"></td>
-          <td><input type="text" id=textos data-field="juev_act2_terr"></td>
-        </tr>
-        <tr>
-          <th>ALMUERZO:</th>
-          <td>
-            <select data-field="agent_hora_9">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="juev_alm_act"></td>
-          <td><input type="text" id=textos data-field="juev_alm_dir"></td>
-          <td><input type="text" id=textos data-field="juev_alm_terr"></td>
-        </tr>
-        <tr>
-          <th>
-            <select data-field="juev_tipo2_actividad">
-              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>
-              <option value="PASTOREO">PASTOREO</option>
-              <option value="CURSO">CURSO DE LA BIBLIA</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_10">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="juev_act2_act"></td>
-          <td><input type="text" id=textos data-field="juev_act2_dir"></td>
-          <td><input type="text" id=textos data-field="juev_act2_terr"></td>
-        </tr>
-        <tr>
-          <th>SERVICIO CAMPO:</th>
-          <td>
-            <select data-field="agent_hora_11">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="juev_serv2_act"></td>
-          <td><input type="text" id=textos data-field="juev_serv2_dir"></td>
-          <td><input type="text" id=textos data-field="juev_serv2_terr"></td>
-        </tr>
-        <tr class="fila-fija">
-          <th>
-            <select data-field="juev_tipo3_actividad">
-              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>  
-              <option value="REUNIÓN">REUNIÓN CON PRECURSORES</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_12">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="juev_reu_act"></td>
-          <td><input type="text" id=textos data-field="juev_reu_dir"></td>
-          <td><input type="text" id=textos data-field="juev_reu_terr"></td>
-        </tr>
-      </table>
-      <h3>VIERNES</h3>
-      <table>
-        <tr>
-          <th style="text-align: center; width: 27%">DETALLE</th>
-          <th style="width: 10%">HORA</th>
-          <th style="text-align: center; width: 25%">NOMBRE</th>
-          <th style="text-align: center; width: 23%">DIRECCIÓN</th>
-          <th style="text-align: center; width: 13%">N° TERRITORIO</th>
-        </tr>
-        <tr>
-          <th>
-            <select data-field="vier_tipo_actividad">
-              <option value="SIN ARREGLO">SIN ARREGLO</option>              
-              <option value="PASTOREO">PASTOREO</option>
-              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_13">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="vier_no_act" placeholder="ustedes si desean programar salida" ></td>
-          <td><input type="text" id=textos data-field="vier_no_dir"></td>
-          <td><input type="text" id=textos data-field="vier_no_terr"></td>
-        </tr>
-        <tr class="fila-fija">
-          <th>
-            <select data-field="vier_tipo2_actividad">
-              <option value="SIN ARREGLO">SIN ARREGLO</option>  
-              <option value="ALMUERZO">ALMUERZO</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_14">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="vier_alm_act"></td>
-          <td><input type="text" id=textos data-field="vier_alm_dir"></td>
-          <td><input type="text" id=textos data-field="vier_alm_terr"></td>
-        </tr>
-        <tr class="fila-fija">
-          <th>
-            <select data-field="vier_tipo3_actividad">
-              <option value="CURSO">CURSO DE LA BIBLIA</option>  
-              <option value="PASTOREO">PASTOREO</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_15">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="vier_act_act"></td>
-          <td><input type="text" id=textos data-field="vier_act_dir"></td>
-          <td><input type="text" id=textos data-field="vier_act_terr"></td>
-        </tr>
-        <tr>
-          <th>SERVICIO DE CAMPO:</th>
-          <td>
-            <select data-field="agent_hora_16">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="vier_serv_act"></td>
-          <td><input type="text" id=textos data-field="vier_serv_dir"></td>
-          <td><input type="text" id=textos data-field="vier_serv_terr"></td>
-        </tr>
-        <tr>
-          <th>
-            <select data-field="vier_tipo4_actividad">
-              <option value="REUNIÓN">REUNIÓN CON ANCIANOS Y S.M</option>
-              <option value="PASTOREO">PASTOREO</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_17">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="vier_reu_act"></td>
-          <td><input type="text" id=textos data-field="vier_reu_dir"></td>
-          <td><input type="text" id=textos data-field="vier_reu_terr"></td>
-        </tr>
-      </table>
-
-      <h3>SÁBADO</h3>
-      <table>
-        <tr>
-          <th style="text-align: center; width: 27%">DETALLE</th>
-          <th style="width: 10%">HORA</th>
-          <th style="text-align: center; width: 25%">NOMBRE</th>
-          <th style="text-align: center; width: 23%">DIRECCIÓN</th>
-          <th style="text-align: center; width: 13%">N° TERRITORIO</th>
-        </tr>
-        <tr>
-          <th>SERVICIO CAMPO:</th>
-          <td>
-            <select data-field="agent_hora_18">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="sab_serv_act"></td>
-          <td><input type="text" id=textos data-field="sab_serv_dir"></td>
-          <td><input type="text" id=textos data-field="sab_serv_terr"></td>
-        </tr>
-        <tr>
-          <th>
-            <select data-field="sab_tipo_actividad">
-              <option value="SELEC">SELECCIONAR ACTIVIDAD</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>
-              <option value="SERVICIO CAMPO">CURSO DE LA BIBLIA</option>
-              <option value="SIN ARREGLO">CARRITOS</option>
-              <option value="SIN ARREGLO">TELEFONICA</option>
-            </select>
-          </th>
-            <td>
-            <select data-field="agent_hora_19">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="sab_act_act"></td>
-          <td><input type="text" id=textos data-field="sab_act_dir"></td>
-          <td><input type="text" id=textos data-field="sab_act_terr"></td>
-        </tr>
-        <tr>
-          <th>ALMUERZO:</th>
-          <td>
-            <select data-field="agent_hora_20">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="sab_alm_act"></td>
-          <td><input type="text" id=textos data-field="sab_alm_dir"></td>
-          <td><input type="text" id=textos data-field="sab_alm_terr"></td>
-        </tr>
-        <tr>
-          <th>
-            <select data-field="sab_tipo2_actividad">
-              <option value="REUNIÓN">REUNIÓN CON CONGREGACION</option>
-              <option value="PASTOREO">PASTOREO</option>
-              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_21">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="sab_reu_act"></td>
-          <td><input type="text" id=textos data-field="sab_reu_dir"></td>
-          <td><input type="text" id=textos data-field="sab_reu_terr"></td>
-        </tr>
-      </table>
-
-      <h3>DOMINGO</h3>
-      <table>
-        <tr>
-          <th style="text-align: center; width: 27%">DETALLE</th>
-          <th style="width: 10%">HORA</th>
-          <th style="text-align: center; width: 25%">NOMBRE</th>
-          <th style="text-align: center; width: 23%">DIRECCIÓN</th>
-          <th style="text-align: center; width: 13%">N° TERRITORIO</th>
-        </tr>
-        <tr>
-          <th>
-            <select data-field="dom_tipo_actividad">
-              <option value="REUNIÓN">REUNIÓN CON CONGREGACION</option>
-              <option value="PASTOREO">PASTOREO</option>
-              <option value="SERVICIO CAMPO">SERVICIO CAMPO</option>
-              <option value="SIN ARREGLO">SIN ARREGLO</option>
-            </select>
-          </th>
-          <td>
-            <select data-field="agent_hora_22">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="dom_reu_act"></td>
-          <td><input type="text" id=textos data-field="dom_reu_dir"></td>
-          <td><input type="text" id=textos data-field="dom_reu_terr"></td>
-        </tr>
-        <tr>
-          <th>ALMUERZO:</th>
-          <td>
-            <select data-field="agent_hora_23">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="dom_alm_act"></td>
-          <td><input type="text" id=textos data-field="dom_alm_dir"></td>
-          <td><input type="text" id=textos data-field="dom_alm_terr"></td>
-        </tr>
-        <tr>
-          <th>SERVICIO CAMPO:</th>
-          <td>
-            <select data-field="agent_hora_24">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="dom_serv_act"></td>
-          <td><input type="text" id=textos data-field="dom_serv_dir"></td>
-          <td><input type="text" id=textos data-field="dom_serv_terr"></td>
-        </tr>
-      </table>
-
-      <h3>ARREGLO CON CAROLINA:</h3>
-      <table>
-        <tr>
-          <th style="text-align: center; width: 20%">DÍA</th>
-          <th style="width: 10%">HORA</th>
-          <th style="text-align: center; width: 25%">ARREGLO CON:</th>
-          <th style="text-align: center; width: 28%">LUGAR DE ENCUENTRO:</th>
-          <th style="text-align: center; width: 32%">DETALLES:</th>
-        </tr>
-        <tr>
-          <th><select data-field="agent_dia1_caro" id="carolina01" required>
-              <option value="SELECCIONAR DIA">SELECCIONAR DIA</option>
-              <option value="MIÉRCOLES">MIÉRCOLES</option>
-              <option value="JUEVES">JUEVES</option>
-              <option value="VIERNES">VIERNES</option>
-              <option value="SÁBADO">SÁBADO</option>
-              <option value="DOMINGO">DOMINGO</option>
-          </th>
-          <td>
-            <select data-field="agent_hora_25">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="car_mier_con"></td>
-          <td><input type="text" id=textos data-field="car_mier_lugar"></td>
-          <td><input type="text" id=textos data-field="car_mier_det"></td>
-        </tr>
-        <tr>
-          <th><select data-field="agent_dia2_caro" id="carolina02" required>
-              <option value="SELECCIONAR DIA">SELECCIONAR DIA</option>
-              <option value="MIÉRCOLES">MIÉRCOLES</option>
-              <option value="JUEVES">JUEVES</option>
-              <option value="VIERNES">VIERNES</option>
-              <option value="SÁBADO">SÁBADO</option>
-              <option value="DOMINGO">DOMINGO</option>
-          </th>
-          <td>
-            <select data-field="agent_hora_26">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="car_juev_con"></td>
-          <td><input type="text" id=textos data-field="car_juev_lugar"></td>
-          <td><input type="text" id=textos data-field="car_juev_det"></td>
-        </tr>
-        <tr>
-          <th><select data-field="agent_dia3_caro" id="carolina03" required>
-              <option value="SELECCIONAR DIA">SELECCIONAR DIA</option>
-              <option value="MIÉRCOLES">MIÉRCOLES</option>
-              <option value="JUEVES">JUEVES</option>
-              <option value="VIERNES">VIERNES</option>
-              <option value="SÁBADO">SÁBADO</option>
-              <option value="DOMINGO">DOMINGO</option>
-          </th>
-          <td>
-            <select data-field="agent_hora_27">
-              <option value="--">--</option>
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
-              <option value="20:30">20:30</option>
-              <option value="21:00">21:00</option>
-          </td>
-          <td><input type="text" id=textos data-field="car_vier_con"></td>
-          <td><input type="text" id=textos data-field="car_vier_lugar"></td>
-          <td><input type="text" id=textos data-field="car_vier_det"></td>
-        </tr>
-      </table>
-    </form>
+<div class="app">
+  <div class="header">
+    <h1>📋 Programa de Actividades — Javier y Carolina Filippi</h1>
+    <p>Completá el formulario y descargá el PDF en una sola hoja</p>
   </div>
 
-  <div class="button-container">
-    <button type="button" id="btnImprimir" onclick="imprimirFormulario(); return false;">🖨️ Descargar PDF</button>
-    <button type="button" id="btnLimpiar" onclick="limpiarFormulario(); return false;">🗑️ Limpiar</button>
-    <button type="button" id="btnGuardar" onclick="guardarDatosEnNavegador(); return false;">💾 Guardar</button>
+  <div class="body">
 
+    <!-- DATOS GENERALES -->
+    <div class="seccion">
+      <div class="seccion-titulo">⛪ Datos Generales</div>
+      <div class="seccion-cuerpo">
+        <div class="grilla grilla-2">
+          <div class="campo">
+            <label>Congregación</label>
+            <select id="congregacion" data-pdf="congregacion">
+              <option value="">— Seleccionar —</option>
+              <option>Capitán Bermúdez, Santa Fe</option>
+              <option>Este, Carcarañá, Santa Fe</option>
+              <option>Oeste, Carcarañá, Santa Fe</option>
+              <option>Correa, Santa Fe</option>
+              <option>Norte, Fray Luis Beltrán, Santa Fe</option>
+              <option>Sur, Fray Luis Beltrán, Santa Fe</option>
+              <option>Funes, Santa Fe</option>
+              <option>Este, Granadero Baigorria, Santa Fe</option>
+              <option>Oeste, Granadero Baigorria, Santa Fe</option>
+              <option>Este, Pérez, Santa Fe</option>
+              <option>Oeste, Pérez, Santa Fe</option>
+              <option>Pueblo Andino, Santa Fe</option>
+              <option>Puerto General San Martín, Santa Fe</option>
+              <option>Ricardone, Santa Fe</option>
+              <option>Roldán, Santa Fe</option>
+              <option>Norte, San Lorenzo, Santa Fe</option>
+              <option>Sur, San Lorenzo, Santa Fe</option>
+              <option>Totoras, Santa Fe</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label>Hora Reunión Martes</label>
+            <select id="horaReunion" data-pdf="horaReunion"><option value="">--</option></select>
+          </div>
+          <div class="campo">
+            <label>Presidente de la Reunión</label>
+            <input type="text" id="presidente" data-pdf="presidente" placeholder="Nombre completo">
+          </div>
+          <div class="campo">
+            <label>Tesoros de la Biblia</label>
+            <input type="text" id="tesoros" data-pdf="tesoros" placeholder="Nombre completo">
+          </div>
+          <div class="campo">
+            <label>Consejero Auxiliar</label>
+            <input type="text" id="conseaux" data-pdf="conseaux" placeholder="Nombre completo">
+          </div>
+          <div class="campo">
+            <label>Sup. Vida y Ministerio</label>
+            <input type="text" id="supvida" data-pdf="supvida" placeholder="Nombre completo">
+          </div>
+          <div class="campo col-full">
+            <label>Oración Final</label>
+            <input type="text" id="oracion" data-pdf="oracion" placeholder="Nombre completo">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLA DÍAS -->
+    <script>
+      const DIAS = ['MIÉRCOLES','JUEVES','VIERNES','SÁBADO','DOMINGO'];
+      const HORAS = ['--','9:00','9:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00'];
+
+      const ACTIVIDADES_FIJAS = {
+        'MIÉRCOLES': [
+          { det: 'SERVICIO CAMPO', tipo: 'fijo' },
+          { det: null, tipo: 'sel', opts: ['— Seleccionar —','SIN ARREGLO','CURSO DE LA BIBLIA','CARRITOS','TELEFÓNICA'] },
+          { det: 'ALMUERZO', tipo: 'fijo' },
+          { det: null, tipo: 'sel', opts: ['— Seleccionar —','SIN ARREGLO','PASTOREO','CURSO DE LA BIBLIA'] },
+          { det: 'SERVICIO CAMPO', tipo: 'fijo' },
+          { det: null, tipo: 'sel', opts: ['— Seleccionar —','SIN ARREGLO','REUNIÓN CON PRECURSORES'] },
+        ],
+        'JUEVES': [
+          { det: 'SERVICIO CAMPO', tipo: 'fijo' },
+          { det: null, tipo: 'sel', opts: ['— Seleccionar —','SIN ARREGLO','CURSO DE LA BIBLIA','CARRITOS','TELEFÓNICA'] },
+          { det: 'ALMUERZO', tipo: 'fijo' },
+          { det: null, tipo: 'sel', opts: ['— Seleccionar —','SIN ARREGLO','PASTOREO','CURSO DE LA BIBLIA'] },
+          { det: 'SERVICIO CAMPO', tipo: 'fijo' },
+          { det: null, tipo: 'sel', opts: ['— Seleccionar —','SIN ARREGLO','REUNIÓN CON PRECURSORES'] },
+        ],
+        'VIERNES': [
+          { det: null, tipo: 'sel', opts: ['SIN ARREGLO','PASTOREO','SERVICIO CAMPO'] },
+          { det: null, tipo: 'sel', opts: ['SIN ARREGLO','ALMUERZO'] },
+          { det: null, tipo: 'sel', opts: ['CURSO DE LA BIBLIA','PASTOREO'] },
+          { det: 'SERVICIO DE CAMPO', tipo: 'fijo' },
+          { det: null, tipo: 'sel', opts: ['REUNIÓN CON ANCIANOS Y S.M','PASTOREO','SIN ARREGLO'] },
+        ],
+        'SÁBADO': [
+          { det: 'SERVICIO CAMPO', tipo: 'fijo' },
+          { det: null, tipo: 'sel', opts: ['— Seleccionar —','SIN ARREGLO','CURSO DE LA BIBLIA','CARRITOS','TELEFÓNICA'] },
+          { det: 'ALMUERZO', tipo: 'fijo' },
+          { det: null, tipo: 'sel', opts: ['REUNIÓN CON CONGREGACIÓN','PASTOREO','SERVICIO CAMPO','SIN ARREGLO'] },
+        ],
+        'DOMINGO': [
+          { det: null, tipo: 'sel', opts: ['REUNIÓN CON CONGREGACIÓN','PASTOREO','SERVICIO CAMPO','SIN ARREGLO'] },
+          { det: 'ALMUERZO', tipo: 'fijo' },
+          { det: 'SERVICIO CAMPO', tipo: 'fijo' },
+        ],
+      };
+
+      function horaOpts(id) {
+        return HORAS.map((h,i) => `<option value="${h}"${i===0?' selected':''}>${h}</option>`).join('');
+      }
+
+      function renderTabla(dia) {
+        const filas = ACTIVIDADES_FIJAS[dia];
+        const slug = dia.toLowerCase().replace(/é/g,'e').replace(/á/g,'a').replace(/ó/g,'o').replace(/í/g,'i').replace(/ /g,'_');
+        let rows = '';
+        filas.forEach((f, idx) => {
+          const pre = `${slug}_${idx}`;
+          const detHtml = f.tipo === 'fijo'
+            ? `<strong style="font-size:11px;color:#1a3a5c">${f.det}</strong>`
+            : `<select data-pdf="${pre}_det" id="${pre}_det">${f.opts.map(o=>`<option>${o}</option>`).join('')}</select>`;
+
+          rows += `<tr>
+            <td data-label="DETALLE">${detHtml}</td>
+            <td data-label="HORA"><select data-pdf="${pre}_hora" id="${pre}_hora">${horaOpts(pre+'_hora')}</select></td>
+            <td data-label="NOMBRE"><input type="text" data-pdf="${pre}_nom" id="${pre}_nom" placeholder=""></td>
+            <td data-label="DIRECCIÓN"><input type="text" data-pdf="${pre}_dir" id="${pre}_dir" placeholder=""></td>
+            <td data-label="N° TERR."><input type="text" data-pdf="${pre}_terr" id="${pre}_terr" placeholder=""></td>
+          </tr>`;
+        });
+
+        return `<div class="seccion">
+          <div class="seccion-titulo">📅 ${dia}</div>
+          <div class="seccion-cuerpo" style="padding:0;overflow-x:auto">
+            <table class="tabla-actividades">
+              <thead><tr>
+                <th class="col-det">DETALLE</th>
+                <th class="col-hora">HORA</th>
+                <th class="col-nom">NOMBRE / LUGAR</th>
+                <th class="col-dir">DIRECCIÓN</th>
+                <th class="col-terr">N° TERR.</th>
+              </tr></thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+        </div>`;
+      }
+
+      document.write(DIAS.map(d => renderTabla(d)).join(''));
+    </script>
+
+    <!-- ARREGLO CON CAROLINA -->
+    <div class="seccion">
+      <div class="seccion-titulo">👩 Arreglo con Carolina</div>
+      <div class="seccion-cuerpo" style="padding:0;overflow-x:auto">
+        <table class="tabla-actividades">
+          <thead><tr>
+            <th style="width:18%">DÍA</th>
+            <th style="width:12%">HORA</th>
+            <th style="width:22%">ARREGLO CON</th>
+            <th style="width:25%">LUGAR DE ENCUENTRO</th>
+            <th style="width:23%">DETALLES</th>
+          </tr></thead>
+          <tbody id="carolina-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <div class="botones">
+    <button class="btn btn-pdf" id="btnPDF" onclick="generarPDF()">📄 Descargar PDF</button>
+    <button class="btn btn-guardar" onclick="guardar()">💾 Guardar</button>
+    <button class="btn btn-limpiar" onclick="limpiar()">🗑️ Limpiar</button>
   </div>
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
-var datosApp = {};
+// ===== SETUP =====
+const HORAS_ARR = ['--','9:00','9:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00'];
 
-function mostrarMensaje(tipo, mensaje) {
-  var tipoId = tipo === 'exito' ? 'mensajeExito' : tipo === 'error' ? 'mensajeError' : 'mensajeInfo';
-  var elemento = document.getElementById(tipoId);
-  
-  if (elemento) {
-    elemento.textContent = mensaje;
-    elemento.style.display = 'block';
-    setTimeout(function() { 
-      elemento.style.display = 'none'; 
-    }, 4000);
-  }
+function horaSelect(id) {
+  return `<select data-pdf="${id}" id="${id}">${HORAS_ARR.map((h,i)=>`<option ${i===0?'selected':''}>${h}</option>`).join('')}</select>`;
 }
 
-function validarFormulario() {
-  var camposRequeridos = ['congregacion', 'horaReunion', 'presidente', 'tesoros', 'oracion'];
-  
-  for (var i = 0; i < camposRequeridos.length; i++) {
-    var campo = camposRequeridos[i];
-    var input = document.getElementById(campo);
-    if (!input || !input.value.trim()) {
-      mostrarMensaje('error', 'Complete el campo: ' + campo.toUpperCase());
-      if (input) input.focus();
-      return false;
-    }
-  }
-  return true;
+// Poblar horas de reunión
+const hrSel = document.getElementById('horaReunion');
+HORAS_ARR.forEach((h,i) => {
+  const o = document.createElement('option');
+  o.value = h; o.textContent = h;
+  if(i===0) o.selected = true;
+  hrSel.appendChild(o);
+});
+
+// Filas de Carolina
+const carTbody = document.getElementById('carolina-tbody');
+const diasCar = ['MIÉRCOLES','JUEVES','VIERNES','SÁBADO','DOMINGO'];
+[0,1,2].forEach(i => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td data-label="DÍA">
+      <select data-pdf="car_dia_${i}" id="car_dia_${i}">
+        <option value="">— Día —</option>
+        ${diasCar.map(d=>`<option>${d}</option>`).join('')}
+      </select>
+    </td>
+    <td data-label="HORA">${horaSelect(`car_hora_${i}`)}</td>
+    <td data-label="ARREGLO CON"><input type="text" data-pdf="car_con_${i}" id="car_con_${i}" placeholder="Nombre"></td>
+    <td data-label="LUGAR"><input type="text" data-pdf="car_lugar_${i}" id="car_lugar_${i}" placeholder="Dirección"></td>
+    <td data-label="DETALLES"><input type="text" data-pdf="car_det_${i}" id="car_det_${i}" placeholder="Detalles"></td>`;
+  carTbody.appendChild(tr);
+});
+
+// ===== TOAST =====
+function toast(msg, tipo='verde') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast ${tipo} show`;
+  setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-function guardarDatos() {
-  datosApp = {};
-  
-  var camposConId = [ 'horaReunion', 'presidente', 'tesoros', 'oracion'];
-  for (var i = 0; i < camposConId.length; i++) {
-    var id = camposConId[i];
-    var input = document.getElementById(id);
-    if (input) datosApp[id] = input.value;
-  }
-  
-  var camposConDataField = document.querySelectorAll('[data-field]');
-  for (var j = 0; j < camposConDataField.length; j++) {
-    var elem = camposConDataField[j];
-    var field = elem.getAttribute('data-field');
-    if (elem.tagName === 'SELECT') {
-      datosApp[field] = elem.value;
-    } else {
-      datosApp[field] = elem.value;
-    }
-  }
-  
-  mostrarMensaje('exito', '¡Datos guardados correctamente!');
-  return false;
-}
-
-function limpiarFormulario() {
-  if (confirm('¿Desea limpiar el formulario?')) {
-    document.getElementById('programaForm').reset();
-    datosApp = {};
-    mostrarMensaje('info', 'Formulario limpiado');
-  }
-  return false;
-}
-
-function imprimirFormulario() {
-  if (!validarFormulario()) {
-    return false;
-  }
-  
-  guardarDatos();
-  
-  setTimeout(function() {
-    try {
-      window.print();
-    } catch (e) {
-      alert('Por favor use Ctrl+P (Cmd+P en Mac) para imprimir');
-    }
-  }, 300);
-  
-  return false;
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() {
-    console.log('Formulario cargado correctamente');
+// ===== RECOPILAR DATOS =====
+function getData() {
+  const data = {};
+  document.querySelectorAll('[data-pdf]').forEach(el => {
+    data[el.getAttribute('data-pdf')] = el.value || '';
   });
-} else {
-  console.log('Formulario cargado correctamente');
+  return data;
 }
-// COMPLEMENTO PARA GUARDAR/CARGAR DATOS
 
-function cargarDatos() {
+function setData(data) {
+  document.querySelectorAll('[data-pdf]').forEach(el => {
+    const k = el.getAttribute('data-pdf');
+    if (data[k] !== undefined) el.value = data[k];
+  });
+}
+
+// ===== GUARDAR / CARGAR =====
+function guardar() {
   try {
-    var datosGuardados = localStorage.getItem('programaFilippi');
-    if (datosGuardados) {
-      datosApp = JSON.parse(datosGuardados);
-      
-      var camposConId = ['congregacion', 'horaReunion', 'textos','presidente', 'tesoros', 'conseaux', 'supvida', 'oracion'];
-      for (var i = 0; i < camposConId.length; i++) {
-        var id = camposConId[i];
-        var input = document.getElementById(id);
-        if (input && datosApp[id]) {
-          input.value = datosApp[id];
-        }
-      }
-      
-      var camposConDataField = document.querySelectorAll('[data-field]');
-      for (var j = 0; j < camposConDataField.length; j++) {
-        var elem = camposConDataField[j];
-        var field = elem.getAttribute('data-field');
-        if (datosApp[field]) {'data',
-          elem.value = datosApp[field];
-        }
-      }
-      
-      mostrarMensaje('info', 'Datos cargados desde el navegador');
-    }
-  } catch (e) {
-    console.error('Error al cargar datos:', e);
+    localStorage.setItem('prog_filippi', JSON.stringify(getData()));
+    toast('✅ Guardado correctamente');
+  } catch(e) {
+    toast('❌ Error al guardar', 'rojo');
   }
 }
 
-function guardarDatosEnNavegador() {
-  datosApp = {};
-  
-  var camposConId = ['congregacion', 'horaReunion', 'textos','presidente', 'tesoros', 'conseaux', 'supvida', 'oracion'];
-  for (var i = 0; i < camposConId.length; i++) {
-    var id = camposConId[i];
-    var input = document.getElementById(id);
-    if (input) datosApp[id] = input.value;
+function limpiar() {
+  if (confirm('¿Limpiar todos los campos?')) {
+    document.querySelectorAll('[data-pdf]').forEach(el => {
+      if (el.tagName === 'SELECT') el.selectedIndex = 0;
+      else el.value = '';
+    });
+    toast('🗑️ Formulario limpiado');
   }
-  
-  var camposConDataField = document.querySelectorAll('[data-field]');
-  for (var j = 0; j < camposConDataField.length; j++) {
-    var elem = camposConDataField[j];
-    var field = elem.getAttribute('data-field');
-    if (elem.tagName === 'SELECT') {
-      datosApp[field] = elem.value;
-    } else {
-      datosApp[field] = elem.value;
-    }
-  }
-  
-  try {
-    localStorage.setItem('programaFilippi', JSON.stringify(datosApp));
-    mostrarMensaje('exito', '¡Datos guardados correctamente en el navegador!');
-  } catch (e) {
-    mostrarMensaje('error', 'Error al guardar: ' + e.message);
-  }
-  
-  return false;
 }
 
-// Cargar datos al inicio
-cargarDatos();
+// Cargar al inicio
+try {
+  const saved = localStorage.getItem('prog_filippi');
+  if (saved) { setData(JSON.parse(saved)); toast('📂 Datos cargados'); }
+} catch(e) {}
+
+// ===== GENERAR PDF =====
+function generarPDF() {
+  const btn = document.getElementById('btnPDF');
+  btn.classList.add('cargando');
+  btn.textContent = '⏳ Generando...';
+
+  setTimeout(() => {
+    try {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+
+      const d = getData();
+      const W = 297; // A4 landscape width
+      const M = 8;   // margin
+      const CW = W - M*2; // content width
+
+      let y = M;
+
+      // Colores
+      const AZUL    = [26, 58, 92];
+      const AZUL_CL = [37, 99, 168];
+      const AZUL_SF = [219, 234, 254];
+      const GRIS    = [240, 244, 248];
+      const TEXTO   = [30, 41, 59];
+      const BLANCO  = [255, 255, 255];
+
+      function rectFill(x, yw, w, h, color) {
+        doc.setFillColor(...color);
+        doc.rect(x, yw, w, h, 'F');
+      }
+
+      function textCell(text, x, yw, w, h, opts={}) {
+        const { align='left', color=TEXTO, size=7, bold=false, pad=2 } = opts;
+        doc.setFontSize(size);
+        doc.setFont('helvetica', bold ? 'bold' : 'normal');
+        doc.setTextColor(...color);
+        const tx = align==='center' ? x+w/2 : x+pad;
+        const ty = yw + h/2 + size*0.18;
+        doc.text(String(text||''), tx, ty, { align, maxWidth: w - pad*2 });
+      }
+
+      // === ENCABEZADO ===
+      rectFill(M, y, CW, 9, AZUL);
+      textCell('PROGRAMA DE ACTIVIDADES — JAVIER Y CAROLINA FILIPPI', M, y, CW, 9, { align:'center', color:BLANCO, size:10, bold:true });
+      y += 10;
+
+      // === DATOS GENERALES ===
+      rectFill(M, y, CW, 5, AZUL_CL);
+      textCell('DATOS GENERALES', M, y, CW, 5, { align:'center', color:BLANCO, size:7.5, bold:true });
+      y += 5;
+
+      const dg = [
+        ['CONGREGACIÓN', d.congregacion],
+        ['HORA REUNIÓN MARTES', d.horaReunion],
+        ['PRESIDENTE', d.presidente],
+        ['TESOROS DE LA BIBLIA', d.tesoros],
+        ['CONSEJERO AUXILIAR', d.conseaux],
+        ['SUP. VIDA Y MINISTERIO', d.supvida],
+        ['ORACIÓN FINAL', d.oracion],
+      ];
+
+      // 4 en una fila, luego 3
+      const dgRH = 5.5;
+      const row1 = dg.slice(0,4);
+      const row2 = dg.slice(4);
+
+      function dgRow(items, yy) {
+        const cw = CW / items.length;
+        items.forEach((it, i) => {
+          const x = M + i*cw;
+          rectFill(x, yy, cw, dgRH, i%2===0 ? GRIS : [248,250,252]);
+          doc.setDrawColor(...[200,214,229]);
+          doc.rect(x, yy, cw, dgRH);
+          textCell(it[0], x, yy, cw/2, dgRH, { size:6, bold:true, color:AZUL });
+          textCell(it[1], x+cw/2, yy, cw/2, dgRH, { size:6.5, color:TEXTO });
+        });
+      }
+
+      dgRow(row1, y); y += dgRH;
+      dgRow(row2, y); y += dgRH + 1;
+
+      // === DÍAS ===
+      const DIAS_CONF = {
+        'MIÉRCOLES': {
+          slug: 'miercoles', color: [30,64,100],
+          filas: [
+            ['SERVICIO CAMPO',null],
+            [null,'mier_0_det'],
+            ['ALMUERZO',null],
+            [null,'mier_1_det'],
+            ['SERVICIO CAMPO',null],
+            [null,'mier_2_det'],
+          ]
+        },
+        'JUEVES': {
+          slug: 'jueves', color: [22,80,90],
+          filas: [
+            ['SERVICIO CAMPO',null],
+            [null,'jueves_0_det'],
+            ['ALMUERZO',null],
+            [null,'jueves_1_det'],
+            ['SERVICIO CAMPO',null],
+            [null,'jueves_2_det'],
+          ]
+        },
+        'VIERNES': {
+          slug: 'viernes', color: [60,40,100],
+          filas: [
+            [null,'viernes_0_det'],
+            [null,'viernes_1_det'],
+            [null,'viernes_2_det'],
+            ['SERVICIO DE CAMPO',null],
+            [null,'viernes_3_det'],
+          ]
+        },
+        'SÁBADO': {
+          slug: 'sabado', color: [80,40,40],
+          filas: [
+            ['SERVICIO CAMPO',null],
+            [null,'sabado_0_det'],
+            ['ALMUERZO',null],
+            [null,'sabado_1_det'],
+          ]
+        },
+        'DOMINGO': {
+          slug: 'domingo', color: [40,80,40],
+          filas: [
+            [null,'domingo_0_det'],
+            ['ALMUERZO',null],
+            ['SERVICIO CAMPO',null],
+          ]
+        },
+      };
+
+      // Mapeo real de IDs según la estructura generada por JS
+      const slugMap = {
+        'miercoles': 'mi%C3%A9rcoles', // no, usamos los slugs que generó el código
+      };
+
+      // Calculamos slugs reales para cada día (mismo algoritmo del renderTabla)
+      function getSlugs(dia) {
+        return dia.toLowerCase()
+          .replace(/é/g,'e').replace(/á/g,'a').replace(/ó/g,'o').replace(/í/g,'i')
+          .replace(/ /g,'_');
+      }
+
+      // Columnas: det, hora, nom, dir, terr
+      const cols = [0.28, 0.12, 0.22, 0.25, 0.13];
+      const colW = cols.map(c => CW * c);
+      const RH = 5;
+
+      const diasOrden = ['MIÉRCOLES','JUEVES','VIERNES','SÁBADO','DOMINGO'];
+
+      // Calcular cuántas filas hay en total para distribuir en 2 columnas
+      const totalFilas = diasOrden.reduce((acc, d2) => {
+        const conf = DIAS_CONF[d2];
+        return acc + 2 + conf.filas.length; // 2 = encabezado día + encabezado cols
+      }, 0) + 4; // +4 para Carolina
+
+      // Usar 2 bloques lado a lado (izquierda: Mié+Jue, derecha: Vie+Sáb+Dom)
+      const leftDias  = ['MIÉRCOLES','JUEVES'];
+      const rightDias = ['VIERNES','SÁBADO','DOMINGO'];
+      const halfW = (CW - 3) / 2;
+      const halfX = [M, M + halfW + 3];
+
+      function renderDiaBlock(dia, bx, bw, yStart) {
+        const conf = DIAS_CONF[dia];
+        const slug = getSlugs(dia);
+        const fRH  = 5.2;
+        let yy = yStart;
+
+        // Header día
+        const dcolor = conf.color;
+        rectFill(bx, yy, bw, 5.5, dcolor);
+        textCell(dia, bx, yy, bw, 5.5, { align:'center', color:BLANCO, size:8, bold:true });
+        yy += 5.5;
+
+        // Header cols
+        const cH = 4;
+        const hds = ['DETALLE','HORA','NOMBRE / LUGAR','DIRECCIÓN','N° T.'];
+        const cws = [0.28,0.12,0.22,0.25,0.13].map(c=>bw*c);
+        let cx = bx;
+        hds.forEach((h,i) => {
+          rectFill(cx, yy, cws[i], cH, AZUL_SF);
+          doc.setDrawColor(150,180,210);
+          doc.rect(cx, yy, cws[i], cH);
+          textCell(h, cx, yy, cws[i], cH, { size:5.5, bold:true, color:AZUL, align:'center' });
+          cx += cws[i];
+        });
+        yy += cH;
+
+        // Filas
+        conf.filas.forEach((fila, fi) => {
+          const [fixLabel, dynKey] = fila;
+          const prefix = `${slug}_${fi}`;
+          const detLabel = fixLabel || (d[`${prefix}_det`] || '');
+          const hora     = d[`${prefix}_hora`] || '--';
+          const nom      = d[`${prefix}_nom`] || '';
+          const dir      = d[`${prefix}_dir`] || '';
+          const terr     = d[`${prefix}_terr`] || '';
+
+          const bg = fi%2===0 ? BLANCO : [245,249,252];
+          cx = bx;
+          [detLabel, hora, nom, dir, terr].forEach((val, i) => {
+            rectFill(cx, yy, cws[i], fRH, bg);
+            doc.setDrawColor(210,220,230);
+            doc.rect(cx, yy, cws[i], fRH);
+            const isBold = i===0 && fixLabel;
+            textCell(val, cx, yy, cws[i], fRH, { size:6, bold:!!isBold, color: isBold?AZUL:TEXTO });
+            cx += cws[i];
+          });
+          yy += fRH;
+        });
+
+        return yy;
+      }
+
+      const yLeft0 = y;
+      let yLeft = y;
+      leftDias.forEach(dia => {
+        yLeft = renderDiaBlock(dia, halfX[0], halfW, yLeft) + 2;
+      });
+
+      let yRight = y;
+      rightDias.forEach(dia => {
+        yRight = renderDiaBlock(dia, halfX[1], halfW, yRight) + 2;
+      });
+
+      y = Math.max(yLeft, yRight) + 1;
+
+      // === ARREGLO CON CAROLINA ===
+      rectFill(M, y, CW, 5, [100, 50, 120]);
+      textCell('ARREGLO CON CAROLINA', M, y, CW, 5, { align:'center', color:BLANCO, size:7.5, bold:true });
+      y += 5;
+
+      const carCols = [0.14,0.1,0.22,0.27,0.27].map(c=>CW*c);
+      const carHds  = ['DÍA','HORA','ARREGLO CON','LUGAR DE ENCUENTRO','DETALLES'];
+      let cx = M;
+      carHds.forEach((h,i) => {
+        rectFill(cx, y, carCols[i], 4, AZUL_SF);
+        doc.setDrawColor(150,180,210);
+        doc.rect(cx, y, carCols[i], 4);
+        textCell(h, cx, y, carCols[i], 4, { size:5.5, bold:true, color:AZUL, align:'center' });
+        cx += carCols[i];
+      });
+      y += 4;
+
+      [0,1,2].forEach(i => {
+        const bg = i%2===0 ? BLANCO : [245,249,252];
+        const vals = [
+          d[`car_dia_${i}`]||'',
+          d[`car_hora_${i}`]||'--',
+          d[`car_con_${i}`]||'',
+          d[`car_lugar_${i}`]||'',
+          d[`car_det_${i}`]||'',
+        ];
+        cx = M;
+        vals.forEach((v,j) => {
+          rectFill(cx, y, carCols[j], 5, bg);
+          doc.setDrawColor(210,220,230);
+          doc.rect(cx, y, carCols[j], 5);
+          textCell(v, cx, y, carCols[j], 5, { size:6, color:TEXTO });
+          cx += carCols[j];
+        });
+        y += 5;
+      });
+
+      // Borde general
+      doc.setDrawColor(...AZUL);
+      doc.setLineWidth(0.5);
+      doc.rect(M-1, M-1, CW+2, y - M + 2);
+
+      // Footer
+      y += 3;
+      doc.setFontSize(6);
+      doc.setTextColor(150,150,150);
+      doc.text('Programa generado automáticamente', W/2, y, { align:'center' });
+
+      const cong = d.congregacion || 'programa';
+      doc.save(`Programa_Filippi_${cong.split(',')[0]}.pdf`);
+      toast('✅ PDF generado correctamente');
+    } catch(e) {
+      console.error(e);
+      toast('❌ Error al generar el PDF: ' + e.message, 'rojo');
+    }
+
+    const btn2 = document.getElementById('btnPDF');
+    btn2.classList.remove('cargando');
+    btn2.textContent = '📄 Descargar PDF';
+  }, 100);
+}
 </script>
-
 </body>
 </html>
